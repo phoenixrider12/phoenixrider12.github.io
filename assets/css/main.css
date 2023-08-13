@@ -1222,7 +1222,7 @@ input[type="radio"] + label:before {
   .image.left, .image.right {
     max-width: 40%; }
     .image.left img, .image.right img {
-      width: 100%; }
+      width: 80%; }
   .image.left {
     float: left;
     padding: 0 1.5em 1em 0;
@@ -1234,15 +1234,15 @@ input[type="radio"] + label:before {
   .image.fit {
     display: block;
     margin: 0 0 2em 0;
-    width: 100%; }
+    width: 80%; }
     .image.fit img {
-      width: 100%; }
+      width: 80%; }
   .image.main {
     display: block;
     margin: 0 0 3em 0;
-    width: 100%; }
+    width: 80%; }
     .image.main img {
-      width: 100%; }
+      width: 80%; }
 
 a.image {
   overflow: hidden; }
