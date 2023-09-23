@@ -2274,8 +2274,16 @@ button,
 
 
 .icra_image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icra_image img{
+  width: 350px;
+  margin-left: 50px;
+
+  /* height: auto; */
+  /* object-fit: cover; */
+  /* object-position: center; */
 }
