@@ -1,0 +1,309 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+    body {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight:300;
+        font-size:18px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1100px;
+    }
+
+    h1 {
+        font-weight:300;
+    }
+
+    h2 {
+        font-weight: 300;
+    }
+
+    .disclaimerbox {
+        background-color: #eee;
+        border: 1px solid #eeeeee;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+        padding: 20px;
+    }
+
+    video.header-vid {
+        height: 140px;
+        border: 1px solid black;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+
+    img.header-img {
+        height: 140px;
+        border: 1px solid black;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+
+    img.rounded {
+        border: 1px solid #eeeeee;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+
+    a:link,a:visited
+    {
+        color: #1367a7;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #208799;
+    }
+
+    td.dl-link {
+        height: 160px;
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+                0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                5px 5px 0 0px #fff, /* The second layer */
+                5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                10px 10px 0 0px #fff, /* The third layer */
+                10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+                15px 15px 0 0px #fff, /* The fourth layer */
+                15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+                20px 20px 0 0px #fff, /* The fifth layer */
+                20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+                25px 25px 0 0px #fff, /* The fifth layer */
+                25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+        margin-left: 10px;
+        margin-right: 45px;
+    }
+
+
+    .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+                0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                5px 5px 0 0px #fff, /* The second layer */
+                5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                10px 10px 0 0px #fff, /* The third layer */
+                10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-right: 30px;
+        margin-bottom: 5px;
+    }
+
+    .vert-cent {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    hr
+    {
+        border: 0;
+        height: 1.5px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
+</style>
+
+<html>
+  <head>
+        <title>Visual Failure Mitigation</title>
+        <meta property="og:title" content="Factored 3D" />
+  </head>
+
+  <body>
+    <br>
+    <center>
+    <span style="font-size:42px">Detecting and Mitigating System-Level Anomalies of Vision-Based
+        Controllers</span>
+    </center>
+
+    <br><br>
+      <table align=center width=900px>
+       <tr>
+        <td align=center width=100px>
+        <center>
+        <span style="font-size:20px"><a href="https://phoenixrider12.github.io/">Aryaman Gupta*<sup>1</sup></a></span>
+        </center>
+        </td>
+
+        <td align=center width=100px>
+        <center>
+        <span style="font-size:20px"><a href="https://vatsuak.github.io/">Kaustav Chakraborty*<sup>2</sup></a></span>
+        </center>
+        </td>
+
+        <td align=center width=100px>
+        <center>
+        <span style="font-size:20px"><a href="https://smlbansal.github.io/">Somil Bansal<sup>2</sup></a></span>
+        </center>
+        </td>
+     </tr>
+    </table>
+
+    <br>
+    <table align=center width=700px>
+       <tr>
+        <td align=center width=100px>
+        <center>
+        <span style="font-size:15px"><sup>1</sup> Indian Institute of Technology (BHU), Varanasi <sup>2</sup> University of Southern California</span>
+        </center>
+        </td>
+     </tr>
+    </table>
+    <br><br>
+  <table align=center>
+              <tr>
+                  <td width=1000>
+                    <center>
+                      <!-- METHOD VIDEO HERE -->
+                      <iframe width="840" height="473" src="https://www.youtube.com/embed/Z9DtIEBrSvs?si=djiFRNIzsWVG0mYE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                  </center>
+                  </td>
+              </tr>
+            </table>
+
+            <br>
+
+            <br><br>
+          <hr>
+    <center><h1>Abstract</h1></center>
+
+            <br>
+            Autonomous systems, such as self-driving cars
+            and drones, have made significant strides in recent years by
+            leveraging visual inputs and machine learning for decision-
+            making and control. Despite their impressive performance,
+            these vision-based controllers can make erroneous predictions
+            when faced with novel or out-of-distribution inputs. Such errors
+            can cascade to catastrophic system failures and compromise
+            system safety. In this work, we introduce a run-time anomaly
+            monitor to detect and mitigate such closed-loop, system-level
+            failures. Specifically, we leverage a reachability-based frame-
+            work to stress-test the vision-based controller offline and mine
+            its system-level failures. This data is then used to train a
+            classifier that is leveraged online to flag inputs that might cause
+            system breakdowns. The anomaly detector highlights issues
+            that transcend individual modules and pertain to the safety
+            of the overall system. We also design a fallback controller
+            that robustly handles these detected anomalies to preserve
+            system safety. We validate the proposed approach on an
+            autonomous aircraft taxiing system that uses a vision-based
+            controller for taxiing. Our results show the efficacy of the
+            proposed approach in identifying and handling system-level
+            anomalies, outperforming methods such as prediction error-
+            based detection, and ensembling, thereby enhancing the overall
+            safety and robustness of autonomous systems.
+            <br><br>
+          <hr>
+         <!-- <table align=center width=550px> -->
+            <table align=center width=650>
+             <center><h1>Paper</h1></center>
+                <tr>
+                    <!--<td width=300px align=left>-->
+                    <!-- <a href="http://arxiv.org/pdf/1603.08511.pdf"> -->
+                  <!-- <td><a href="#"><img class="layered-paper-big" style="height:175px" src="./resources/images/paper.png"/></a></td> -->
+                  <td><a href="assets/failure_mitigation_arxiv.pdf"><img style="height:280px" src="images/icra_paper_preview.png"/></a></td>
+                  <td><span style="font-size:14pt">Gupta, Chakraborty, Bansal<br><br>
+                    Detecting and Mitigating System-Level Anomalies of Vision-Based
+                    Controllers
+                  <!-- [hosted on <a href="#">arXiv</a>]</a> -->
+                    </td>
+              </tr>
+            </table>
+          <br>
+
+          <table align=center width=180px>
+              <tr>
+                  <td><span style="font-size:14pt"><center>
+                      <a href="assets/failure_mitigation_arxiv.pdf">[pdf]</a>
+                    </center></td>
+
+                  <td><span style="font-size:14pt"><center>
+                      <a href="">[Bibtex]</a>
+                    </center></td>
+              </tr>
+            </table>
+              <br>
+
+                <hr>
+
+         <center><h1>Code</h1></center>
+            <table align=center width=1000px>
+                <tr>
+                        <center>
+                          <a href=''><img class="round" style="width: 700;" src="images/icra.png"/></a>
+                        </center>
+              </tr>
+          </table>
+
+            <table align=center width=800px>
+              <tr><center> <br>
+                <span style="font-size:28px">&nbsp;<a href='https://github.com/phoenixrider12/visual_failure_mitigation'>[GitHub]</a>
+
+                <span style="font-size:28px"></a></span>
+              <br>
+              </center></tr>
+          </table>
+            <br>
+          <!-- <hr> -->
+
+          <!-- <center><h1>Results (Simulation)</h1></center> -->
+          <!-- <table align=center width=900px>
+              <tr>
+                  <td width=600px>
+                    <center>
+                        <a href="./resources/images/results_simulation.png"><img src = "./resources/images/results_simulation.png" width="800px"></img></href></a><br>
+                  </center>
+                  </td>
+              </tr>
+                  <td width=600px>
+                    <center>
+                        <span style="font-size:14px"><i> <span style="font-weight:bold">Metrics</span> We evaluate LB-WayPtNav against a comparable end-to-end method and a purely geometric method which uses depth images to estimate an occupancy map of the environment for use in planning via Model Predictive Control (MPC). For the geometric method we compare against both an agent with memory which estimates an occupancy grid based on all the depth images thus far and one that is reactive and estimates an occupancy grid based only on its current view of the environment. All methods are tested on a set of 185 navigational goals in a previously unseen test environment. Our method is approximately 20-25% more successful on these new goals than the end-to-end method. The success rate of LB-WayPtNav, which itself is reactive, is comparable to that of the Mapping (memoryless) baseline. The remaining three metrics are computed on the subset of test goals on which all methods are successful. We find that the model based method navigates to the goal region 1.5 to 2 times as quickly as the end-to-end method with average acceleration approximately half that of the end-to-end method and average jerk approximately 1/20th that of the end-to-end method. LB-WayPtNav is comparable to the mapping based methods in terms of time to reach goal, acceleration, and jerk.</i>
+                  </center>
+                  </td>
+              </tr>
+          </table>
+          <br> -->
+          <!-- <table align=center width=900px>
+              <tr>
+                  <td width=600px>
+                    <center>
+                        <a href="./resources/images/velocity_profile.png"><img src = "./resources/images/velocity_profile.png" height="220px"></img></href></a><br>
+                  </center>
+                  </td>
+              </tr>
+                  <td width=600px>
+                    <center>
+                        <span style="font-size:14px"><i> <span style="font-weight:bold">Control Profiles</span> The proposed method produces significantly smoother control profiles than the end-to-end method which are much easier to track on a real physical system. The jerky profiles learned by the end-to-end method could lead to increased probability of hardware failure on a real system as well. Additionally, these jerky control profiles would lead to dramatically increased power usage and thus decreased battery life.</i>
+                  </center>
+                  </td>
+              </tr>
+          </table>
+          <br> -->
+
+
+           <hr>
+
+            <table align=center width=1100px>
+                <tr>
+                    <td>
+                      <left>
+                <!-- <center><h1>Acknowledgements</h1></center> -->
+                <!-- This research is supported in part by the DARPA Assured Autonomy program under agreement number FA8750-18-C-0101, by NSF under the CPS Frontier project VeHICaL project (1545126), by NSF grants 1739816 and 1837132, by the UC-Philippine-California Advanced Research Institute under project IIID-2016-005, by SRC under the CONIX Center, and by Berkeley Deep Drive. -->
+                <!-- <br> -->
+                <!-- <br> -->
+                This webpage template was borrowed from some <a href="https://richzhang.github.io/colorization/">colorful folks</a>.
+            </left>
+        </td>
+        </tr>
+        </table>
+
+        <br><br>
+</body>
+</html>
