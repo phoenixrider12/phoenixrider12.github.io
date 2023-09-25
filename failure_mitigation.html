@@ -251,25 +251,35 @@
               </center></tr>
           </table>
             <br>
-          <!-- <hr> -->
+          <hr>
 
-          <!-- <center><h1>Results (Simulation)</h1></center> -->
-          <!-- <table align=center width=900px>
+          <center><h1>Results</h1></center>
+          <table align=center width=900px>
               <tr>
                   <td width=600px>
                     <center>
-                        <a href="./resources/images/results_simulation.png"><img src = "./resources/images/results_simulation.png" width="800px"></img></href></a><br>
+                        <a href="images/icra_results.png"><img src = "images/icra_results.png" width="600px"></img></href></a><br>
                   </center>
                   </td>
               </tr>
                   <td width=600px>
                     <center>
-                        <span style="font-size:14px"><i> <span style="font-weight:bold">Metrics</span> We evaluate LB-WayPtNav against a comparable end-to-end method and a purely geometric method which uses depth images to estimate an occupancy map of the environment for use in planning via Model Predictive Control (MPC). For the geometric method we compare against both an agent with memory which estimates an occupancy grid based on all the depth images thus far and one that is reactive and estimates an occupancy grid based only on its current view of the environment. All methods are tested on a set of 185 navigational goals in a previously unseen test environment. Our method is approximately 20-25% more successful on these new goals than the end-to-end method. The success rate of LB-WayPtNav, which itself is reactive, is comparable to that of the Mapping (memoryless) baseline. The remaining three metrics are computed on the subset of test goals on which all methods are successful. We find that the model based method navigates to the goal region 1.5 to 2 times as quickly as the end-to-end method with average acceleration approximately half that of the end-to-end method and average jerk approximately 1/20th that of the end-to-end method. LB-WayPtNav is comparable to the mapping based methods in terms of time to reach goal, acceleration, and jerk.</i>
+                        <span style="font-size:14px"><i> <span style="font-weight:bold">Fig.</span> <b>(a, b)</b> Trajectory followed by the aircraft under the TaxiNet
+                          controller (dashed black line) and the safety pipeline (red line).
+                          The color shift in the red curve shows velocity variation due to
+                          the fallback controller. <b>(c)</b> The grey region represents the system
+                          BRT under the TaxiNet controller, and the blue region represents
+                          the BRT under the safety pipeline. The BRT obtained using the
+                          AD and the fallback controller is appreciably smaller than the one
+                          obtained using vanilla TaxiNet. <b>(d)</b> Input image at the start state
+                          in (a), causing system failure due to runway boundaries. <b>(e)</b> Input
+                          image at the start state in (b), causing system failure due to runway
+                          markings.</i>
                   </center>
                   </td>
               </tr>
           </table>
-          <br> -->
+          <br>
           <!-- <table align=center width=900px>
               <tr>
                   <td width=600px>
