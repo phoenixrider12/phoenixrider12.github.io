@@ -127,18 +127,18 @@
 
     <table align=center width=1000px>
         <tr>
+                <!-- <center> -->
+                  <!-- <a href=''><img class="round" style="width: 400;" src="mapping_ss.png"/></a> -->
+                <!-- </center> -->
                 <center>
-                  <a href=''><img class="round" style="width: 400;" src="path.png"/></a>
+                  <a href=''><img class="round" style="width: 700;" src="nav_test_ss.png"/></a>
                 </center>
       </tr>
   </table>
             <br><br>
 
             <!-- <br> -->
-            The main objective of this project was to make an efficient multi-agent algorithm for cleaning an unknown terrain,
-             for which we built <a href="https://github.com/phoenixrider12/Vox-Bot">“Vox-Bot,”</a> a ROS package for a multi-robot platform. 
-             This is our solution submitted for AIITRA Robotics Challenge 2021, where we <b>secured second position</b> among all other IITs 
-             and prestigious colleges of India.
+            In this project, we are trying to develop a Multi-Robot Mapping pipeline that can be used for manual/autonomous mapping of unknown terrains with multiple robots without any prior information about the environment. Also, once the map is prepared, we are trying to incorporate dynamic environment changes in our generated occupancy grid from knowledge gained from camera sensors.
             <br><br>
 
           <!-- <br> -->
@@ -146,15 +146,11 @@
           <table align=center width=180px>
               <tr>
                   <td><span style="font-size:14pt">
-                      <a href="https://github.com/phoenixrider12/Vox-Bot">[Code]</a>
+                      <a href="https://github.com/phoenixrider12/Multi-VOLTA-Exploration-and-Dynamic-Map-Updates">[Code]</a>
                     </td>
 
                     <td><span style="font-size:14pt">
-                      <a href="https://docs.google.com/presentation/d/15Tr9ttaVZmQwHbguTARzjeVO22R2nE5FTYrOWf2-XHw/edit?usp=sharing">[Slides]</a>
-                    </td>
-
-                  <td><span style="font-size:14pt">
-                      <a href="https://drive.google.com/file/d/1JusOGQFmkjaVjfD4kQLPCjKfHKlH5u1N/preview">[Abstract]</a>
+                      <a href="https://docs.google.com/presentation/d/1aI4XAEJ03-eVSFvvPp1vc2dhd3e40BZHbnoN6kscu6A/edit?usp=sharing">[Slides]</a>
                     </td>
               </tr>
             </table>
@@ -162,136 +158,112 @@
 
                 <hr>
 
-         <center><h1>Description</h1></center>
+         <center><h1>Manual Multi-Robot Mapping</h1></center>
             <table align=center width=1000px>
                 <tr>
                         <center>
-                          <a href=''><img class="round" style="width: 700;" src="bot.png"/></a>
+                          <a href=''><img class="round" style="width: 500;" src="map_merge.gif"/></a>
                           <figcaption><i>Vox-Bot CAD design</i></figcaption>
                         </center>
               </tr>
           </table>
         <br><br>
-        Vox Bot is a four-wheeled robot with omni wheels for maximum agility and mobility. The primary purpose of the robot is to perform vacuum cleaning autonomously in unknown terrain. It houses a Lidar for mapping and an SBC for all computational needs, with one high-power brushless motor for vacuum generation and four brushed motors for exhausts. For the Vacuum system, we have done multiple studies on the airflow, which can be found in the Airflow section. Below, we explain our solution for the problem statement.
+        For manual multi-robot mapping, we are using standard LIDAR based SLAM Gmapping for individual robot to prepare individual maps and then merging them to produce a global map. For merging, a feature matching algorithm is used which detects overlapping features in individual maps and combines them with/without knowing the initial position of any robot. More details can be found <a href="http://wiki.ros.org/multirobot_map_merge">here</a>.
         <br><br>
+
+          <table align=center>
+            <tr>
+                <td width=1000>
+                  <center>
+                    <!-- METHOD VIDEO HERE -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/nefMJ8caYpQ?si=6q2gA_vGh-BYTdrs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                </td>
+            </tr>
+          </table>
+          <br>
           <hr>
 
-          <center><h1>Pipeline</h1></center>
+          <center><h1>Multi-Robot Exploration</h1></center>
 
-          We have modified the Vanilla navigation stack offered in move base ROS. We have used movebase flex for implementing the architecture of the below navigation stack.          <br><br>
+          <p>
+            Exploration is always preferred while mapping because the robots can autonomously generate a map without any human effort. The classical way of exploration is to get frontier points on edges of generated occupancy grid and forwarding those points as goal to the robot so that it can traverse to the point and explore that area. There are several open-source ROS packages available for this approach, like <a href="http://wiki.ros.org/explore_lite">explore_lite</a> and <a href="http://wiki.ros.org/frontier_exploration">frontier exploration</a>.
+          </p>
+
+          <p>
+            In our approach, we are using <b>RRT (Rapidly Exploring Random Trees) Exploration</b>. Here, modified RRT algorithm is used for detecting frontier points, which has proven to be much faster than standard exploration. In this algorithm, we run two different ROS nodes for exploration:
+            <ul>
+            <li>Global Frontier Detector: Find frontier points in global occupancy grid.</li>
+            <li>Local Frontier Detector : Find frontier points in each robot's local occupancy grid.(local node for each robot)</li>
+            </ul>
+          </p>
+
           <table align=center width=1000px>
               <tr>
                       <center>
-                        <a href=''><img class="round" style="width: 700;" src="pipeline.png"/></a>
+                        <a href=''><img class="round" style="width: 600;" src="rrt_exploration.gif"/></a>
                         <figcaption><i>Complete Pipeline of our solution</i></figcaption>
                       </center>
             </tr>
         </table>
-      <br>
-      <ul>
-      <li>We have used <a href="http://wiki.ros.org/multirobot_map_merge">multirobot_map_merge</a> with <a href="http://wiki.ros.org/rrt_exploration">rrt exploration</a> for mapping the environment.</li>
 
-      <li>We have used <a href="https://github.com/ethz-asl/polygon_coverage_planning">polygon_planner</a> for planning the Boustrophedon path.</li>
-      
-      <li>The rest is custom implemented with Fortunes algorithm used for computing voronoi diagrams. More details can be found in our <a href="https://drive.google.com/file/d/1JusOGQFmkjaVjfD4kQLPCjKfHKlH5u1N/preview">Proposal</a>.</li>
-    </ul>
-
-      Below are a brief result that is not present in the proposal
-      <br><br>
+        <p>
+          This algorithm runs until the loop closure condition in global map is not satisfied. Here, we assume that the surface of the environment always forms a closed loop and the algorithm stops once it can’t find any open frontiers in the current map, denoting that all the traversable parts of the terrain are mapped, and no more global frontiers are found. More details about this ROS package can be found on <a href="http://wiki.ros.org/rrt_exploration">Wiki</a>.
+        </p>
     <hr>
     
-    <center><h1>Mapping</h1></center>
-    We have used RRT exploration instead of standard frontier exploration for making it more efficient.
-    <br><br>
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 700;" src="mapping_time.png"/></a>
-                  <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption>
-                </center>
-        </tr>
-    </table>
-    <br>
-    <hr>
+    <center><h1>Dynamic Obstacle Avoidance</h1></center>
+    <p>
+    Ground robots are very commonly used in warehouses and factories where the environment is never static and it keeps changing. Hence, we want to create a system which can dynamically change the global costmap whenever there is any change in the environment.
+    </p>
+    <p>
+    For this purpose, we are creating an <b>Object Detection and Map Update</b> pipeline.
+    </p>
 
-    <center><h1>Optimal Coverage</h1></center>
-    We have used Voronoi diagrams and Weighted Centroid Algorithm for distributing the task between individual robots. More details about the same can be found in the proposal.    <br><br>
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 700;" src="voronoi.png"/></a>
-                  <figcaption><i>Generating voronoi diagram using Fortnes algorithm</i></figcaption>
-                </center>
-        </tr><br>
-        <!-- We then iterate using weighted center algorithm for calculating the desired voronoi cells and the positions of each agent. -->
-    </table>
-
-    <!-- <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 400;" src="flow_chart.png"/></a>
-                  <figcaption><i>Weighted center Algorithm</i></figcaption>
-                </center>
-        </tr><br>     
-    </table> -->
-
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 400;" src="optimal_coverage.gif"/></a>
-                  <figcaption><i>Robots computing the path and optimal voronoi cell</i></figcaption>
-                </center>
-        </tr><br>
-    </table>
-<hr>
-    <center><h1>Boustrophedon Path</h1></center>
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 500;" src="bpath1.png"/></a>
-                  <figcaption><i>Path distribution for arena 1</i></figcaption>
-                </center>
-                <center>
-                    <a href=''><img class="round" style="width: 500;" src="bpath2.png"/></a>
-                    <figcaption><i>Path distribution for arena 2</i></figcaption>
-                  </center>
-        </tr>
-    </table>
-    <br>
-    Generating boustrophedon paths for the polygon given by the Voronoi diagram the robot resides in.
-    <br><br>
-    <hr>
-
-    <center><h1>Airflow Study</h1></center>
+    <h2><b>3D Object Detection</h2></b>
 
     <p>
-      The vacuum of the bot works on the principle of the lower fan creating pressure difference to suck in air while the exhaust pushes out the air from the above compartment for efficient vacuum generation. The fan has been placed low for efficient cleaning, with a ground clearance measuring approximately less than half the wheel radius.
+    Here we are using 3D Object Detection instead of standard 2D object detection because for accurately updating costmap, we need object's position as well as an estimate of its dimensions in the real world, and 2D object detection can't provide us that information because it returns a 2D bounding box, whereas 3D object detection can provide that information because it returns a 3D bounding box in camera'a view frame.
     </p>
 
     <p>
-      Analysis of the vacuum mechanism was done using the SolidWorks Flow Simulation tool to get outputs about the kind of behavior shown by our vacuum during actual implementation.    </p>
+    For our purpose, we are using Mediapipe's <a href="https://google.github.io/mediapipe/solutions/objectron.html#camera-coordinate">Objectron</a> module. It is an opensource module which can detect objects like chairs, shoes, coffee mugs and cameras.
+    </p>
+
+    <table align=center width=1000px>
+      <tr>
+              <center>
+                <a href=''><img class="round" style="width: 700;" src="objectron.png"/></a>
+                <figcaption><i>Complete Pipeline of our solution</i></figcaption>
+              </center>
+    </tr>
 
     <p>
-      The simulation required us to cover our rotating regions with circular bounded bodies to define the rotation boundary. We also defined the inlet and outlet velocities as 0.6m/s and 0.15m/s below the bot and at the exhausts, respectively. As the simulation was an internal one, the image only shows the flow inside our bot, but the fact is quite evident through the trajectory of the arrows that in real-world scenarios, the vox would undoubtedly be an efficient vacuum design.    </p>
+      After getting coordinates of all 9 points in camera view frame, we transform them into real world using <a href="https://www.scratchapixel.com/lessons/mathematics-physics-for-computer-graphics/lookat-function">Look-At Transformation</a> technique. Since we can't transform a point to its actual real world coordinate but instead to a 3D line in real world, we compute multiple such lines using multiple cameras and then use gradient descent optimization algorithm to extract the actual coordinates of each point. Then from the real world coordinates of all 9 points, we compute its center's coordinates and its dimensions.
+    </p>
+
+    <h2><b>Map Update</h2></b>
+
+    For performing map updates, we have added a new layer to the global costmap as a plugin. That plugin receives data from objectron and updates the cost of object's new location as well as its previous location. Here is a demo video:
     <br>
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 700;" src="airflow-study.png"/></a>
-                  <figcaption><i>Hypothetical system of the robot with full suction power</i></figcaption>
-                </center>
-                <br>
-                <center>
-                    <a href=''><img class="round" style="width: 500;" src="airflow-closeup.png"/></a>
-                    <figcaption><i>Airflow inside the central chamber</i></figcaption>
-                  </center>
-        </tr>
+    <table align=center>
+      <tr>
+          <td width=1000>
+            <center>
+              <!-- METHOD VIDEO HERE -->
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/QN1Fg9xuopc?si=2zEWUFm12AyoZu3O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>      </tr>
     </table>
     <br>
+    Here is a demo of VOLTA's navigation test while performing map updates:
+    <table align=center>
+      <tr>
+          <td width=1000>
+            <center>
+              <!-- METHOD VIDEO HERE -->
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/PSlzpGhmcgs?si=NTIbzNc4VfrLkIKb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    </table>
+
+</table>
+
+    <br>
     <hr>
-
-
-
 
         <table align=center width=1100px>
         <tr>
