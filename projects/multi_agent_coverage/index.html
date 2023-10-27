@@ -132,58 +132,16 @@
                 </center>
       </tr>
   </table>
-
-      <!-- <table align=center width=900px>
-       <tr>
-        <td align=center width=100px>
-        <center>
-        <span style="font-size:20px"><a href="https://phoenixrider12.github.io/">Aryaman Gupta*<sup>1</sup></a></span>
-        </center>
-        </td>
-
-        <td align=center width=100px>
-        <center>
-        <span style="font-size:20px"><a href="https://vatsuak.github.io/">Kaustav Chakraborty*<sup>2</sup></a></span>
-        </center>
-        </td>
-     </tr>
-    </table> -->
-
-    <!-- <br>
-    <table align=center width=700px>
-       <tr>
-        <td align=center width=100px>
-        <center>
-        <span style="font-size:15px"><sup>1</sup> Indian Institute of Technology (BHU), Varanasi <sup>2</sup> University of Southern California</span>
-        </center>
-        </td>
-     </tr>
-    </table>
-    <br><br> -->
-  <!-- <table align=center>
-              <tr>
-                  <td width=1000>
-                    <center> -->
-                      <!-- METHOD VIDEO HERE -->
-                      <!-- <iframe width="840" height="473" src="https://www.youtube.com/embed/Z9DtIEBrSvs?si=djiFRNIzsWVG0mYE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                  </center>
-                  </td>
-              </tr>
-            </table>
-
-            <br> -->
-
             <br><br>
-          <!-- <hr> -->
-    <!-- <center><h1>Abstract</h1></center> -->
 
-            <br>
+            <!-- <br> -->
             The main objective of this project was to make an efficient multi-agent algorithm for cleaning an unknown terrain,
-             for which we built <a href="https://github.com/phoenixrider12/Vox-Bot">“Vox-Bot”</a>, a ROS package for multi robot platform. 
+             for which we built <a href="https://github.com/phoenixrider12/Vox-Bot">“Vox-Bot,”</a> a ROS package for a multi-robot platform. 
              This is our solution submitted for AIITRA Robotics Challenge 2021, where we <b>secured second position</b> among all other IITs 
              and prestigious colleges of India.
             <br><br>
 
-          <br>
+          <!-- <br> -->
 
           <table align=center width=180px>
               <tr>
@@ -205,21 +163,18 @@
                 <tr>
                         <center>
                           <a href=''><img class="round" style="width: 700;" src="bot.png"/></a>
-                          <figcaption><i>CAD design of Vox-Bot</i></figcaption>
+                          <figcaption><i>Vox-Bot CAD design</i></figcaption>
                         </center>
               </tr>
           </table>
-        <br>
-          Vox Bot is an 4 wheeled robot with omni wheels for maximum agility and mobility. The main purpose of the robot is to perform vacumm cleaning autonomously in unknown terrain. It houses a Lidar for mapping and a SBC for all computational needs, with one high power brushless motor for vacumm generation and 4 brushed motors for exhausts.
-          For the Vacumm system, we have done multiple studies for the airflow which can be found in Airflow section.
-          Below we explain our solution for the problem statement
-        <br>
+        <br><br>
+        Vox Bot is a four-wheeled robot with omni wheels for maximum agility and mobility. The primary purpose of the robot is to perform vacuum cleaning autonomously in unknown terrain. It houses a Lidar for mapping and an SBC for all computational needs, with one high-power brushless motor for vacuum generation and four brushed motors for exhausts. For the Vacuum system, we have done multiple studies on the airflow, which can be found in the Airflow section. Below, we explain our solution for the problem statement.
+        <br><br>
           <hr>
 
           <center><h1>Pipeline</h1></center>
 
-          We have modified the Vanilla navigation stack offered in move base ROS. We have used movebase flex for implementing the below architecture of below navigation stack.
-          <br><br>
+          We have modified the Vanilla navigation stack offered in move base ROS. We have used movebase flex for implementing the architecture of the below navigation stack.          <br><br>
           <table align=center width=1000px>
               <tr>
                       <center>
@@ -232,50 +187,49 @@
       <ul>
       <li>We have used <a href="http://wiki.ros.org/multirobot_map_merge">multirobot_map_merge</a> with <a href="http://wiki.ros.org/rrt_exploration">rrt exploration</a> for mapping the environment.</li>
 
-      <li>We have used <a href="https://github.com/ethz-asl/polygon_coverage_planning">polygon_planner</a> for planning the boustrophedon path.</li>
+      <li>We have used <a href="https://github.com/ethz-asl/polygon_coverage_planning">polygon_planner</a> for planning the Boustrophedon path.</li>
       
-      <li>The rest is custom implemented with fortuners algorithm used for computing voronoi diagram. More detail can be found in our <a href="https://drive.google.com/file/d/1JusOGQFmkjaVjfD4kQLPCjKfHKlH5u1N/preview">Proposal</a>.</li>
+      <li>The rest is custom implemented with Fortunes algorithm used for computing voronoi diagrams. More details can be found in our <a href="https://drive.google.com/file/d/1JusOGQFmkjaVjfD4kQLPCjKfHKlH5u1N/preview">Proposal</a>.</li>
     </ul>
 
       Below are a brief result that is not present in the proposal
-      <br>
+      <br><br>
     <hr>
     
     <center><h1>Mapping</h1></center>
-    We have use RRT exploration instead of simple frontier exploration which made it very efficient
+    We have used RRT exploration instead of standard frontier exploration for making it more efficient.
     <br><br>
     <table align=center width=1000px>
         <tr>
                 <center>
                   <a href=''><img class="round" style="width: 700;" src="mapping_time.png"/></a>
-                  <figcaption><i>Comparision of number of bots and time to explore</i></figcaption>
+                  <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption>
                 </center>
         </tr>
     </table>
+    <br>
     <hr>
 
     <center><h1>Optimal Coverage</h1></center>
-    We have used voronoi diagram and weighted centroid algorithm for distributing the task between individual robots, more detail about it can be found in the Proposal.
-    <br><br>
+    We have used Voronoi diagrams and Weighted Centroid Algorithm for distributing the task between individual robots. More details about the same can be found in the proposal.    <br><br>
     <table align=center width=1000px>
         <tr>
                 <center>
                   <a href=''><img class="round" style="width: 700;" src="voronoi.png"/></a>
-                  <figcaption><i>Generating voronoi diagram using Fortners algorithm</i></figcaption>
+                  <figcaption><i>Generating voronoi diagram using Fortnes algorithm</i></figcaption>
                 </center>
         </tr><br>
-        We then iterate using weighted center algorithm for calculating the desired voronoi cells and the positions of each agent.
+        <!-- We then iterate using weighted center algorithm for calculating the desired voronoi cells and the positions of each agent. -->
     </table>
 
-    <table align=center width=1000px>
+    <!-- <table align=center width=1000px>
         <tr>
                 <center>
                   <a href=''><img class="round" style="width: 400;" src="flow_chart.png"/></a>
                   <figcaption><i>Weighted center Algorithm</i></figcaption>
                 </center>
-        </tr><br>
-        Gives a result as such
-    </table>
+        </tr><br>     
+    </table> -->
 
     <table align=center width=1000px>
         <tr>
@@ -285,8 +239,8 @@
                 </center>
         </tr><br>
     </table>
-
-    <center><h1>Boustrophoedn path</h1></center>
+<hr>
+    <center><h1>Boustrophedon Path</h1></center>
     <table align=center width=1000px>
         <tr>
                 <center>
@@ -300,29 +254,27 @@
         </tr>
     </table>
     <br>
-    Generating boustrophoden path for the polygon given by the voronoi diagram the robot resides on.
+    Generating boustrophedon paths for the polygon given by the Voronoi diagram the robot resides in.
+    <br><br>
     <hr>
 
     <center><h1>Airflow Study</h1></center>
 
     <p>
-        The vacuum of the bot works on the principle of the lower fan creating pressure difference to suck in air while the exhaust pushes out the air from the above compartment for efficient vacuum generation.
-        The fan has been placed low for efficient cleaning, with a ground clearance measuring approximately less than half of the wheel radius.
+      The vacuum of the bot works on the principle of the lower fan creating pressure difference to suck in air while the exhaust pushes out the air from the above compartment for efficient vacuum generation. The fan has been placed low for efficient cleaning, with a ground clearance measuring approximately less than half the wheel radius.
     </p>
 
     <p>
-        Analysis of the vacuum mechanism was done using the SolidWorks Flow Simulation tool to get outputs about the kind of behavior shown by our vacuum during actual implementation.
-    </p>
+      Analysis of the vacuum mechanism was done using the SolidWorks Flow Simulation tool to get outputs about the kind of behavior shown by our vacuum during actual implementation.    </p>
 
     <p>
-        The simulation required us to cover our rotating regions with circular bounded bodies to define the rotation boundary. We also defined the inlet and the outlet velocities as 0.6m/s and 0.15m/s below the bot and at the exhausts respectively. As the simulation was an internal one, the image only shows the flow inside our bot but the fact is quite evident through the trajectory of the arrows that in real-world scenarios, vox would certainly be an efficient vacuum design.
-    </p>
+      The simulation required us to cover our rotating regions with circular bounded bodies to define the rotation boundary. We also defined the inlet and outlet velocities as 0.6m/s and 0.15m/s below the bot and at the exhausts, respectively. As the simulation was an internal one, the image only shows the flow inside our bot, but the fact is quite evident through the trajectory of the arrows that in real-world scenarios, the vox would undoubtedly be an efficient vacuum design.    </p>
     <br>
     <table align=center width=1000px>
         <tr>
                 <center>
                   <a href=''><img class="round" style="width: 700;" src="airflow-study.png"/></a>
-                  <figcaption><i>Hypothetical system of the Robot for full suction power</i></figcaption>
+                  <figcaption><i>Hypothetical system of the robot with full suction power</i></figcaption>
                 </center>
                 <br>
                 <center>
