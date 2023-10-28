@@ -128,17 +128,20 @@
     <table align=center width=1000px>
         <tr>
                 <center>
-                  <a href=''><img class="round" style="width: 400;" src="path.png"/></a>
+                  <a href=''><img class="round" style="width: 1000;" src="overview.png"/></a>
                 </center>
       </tr>
   </table>
             <br><br>
 
             <!-- <br> -->
-            The main objective of this project was to make an efficient multi-agent algorithm for cleaning an unknown terrain,
-             for which we built <a href="https://github.com/phoenixrider12/Vox-Bot">“Vox-Bot,”</a> a ROS package for a multi-robot platform. 
-             This is our solution submitted for AIITRA Robotics Challenge 2021, where we <b>secured second position</b> among all other IITs 
-             and prestigious colleges of India.
+            This is our solution for Drona Aviation Pluto Swarm Challenge in Inter IIT Tech Meet 11.0. It comprises of three following tasks:<br>
+            <b>Task-1</b> - We had to create a python wrapper for the drone that enables users to control the
+            drone without using the mobile application.<br>
+            <b>Task-2</b> - It demanded to use ArUco markers and an overhead camera to localize the drone. We had
+            to implement a PID controller to hover it at a constant position and move it in a rectangular path.<br>
+            <b>Task-3</b> - We had to create a swarm of two drones where one drone follows the other
+            autonomously in a rectangular trajectory of 1x2m.
             <br><br>
 
           <!-- <br> -->
@@ -146,15 +149,15 @@
           <table align=center width=180px>
               <tr>
                   <td><span style="font-size:14pt">
-                      <a href="https://github.com/phoenixrider12/Vox-Bot">[Code]</a>
+                      <a href="https://github.com/phoenixrider12/Drona_Aviation_Pluto_Swarm_Challenge">[Code]</a>
                     </td>
 
                     <td><span style="font-size:14pt">
-                      <a href="https://docs.google.com/presentation/d/15Tr9ttaVZmQwHbguTARzjeVO22R2nE5FTYrOWf2-XHw/edit?usp=sharing">[Slides]</a>
+                      <a href="https://www.canva.com/design/DAFaFTY0xgs/tUFYxl4E0rU_p3ImxOLw6w/edit?utm_content=DAFaFTY0xgs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">[Slides]</a>
                     </td>
 
                   <td><span style="font-size:14pt">
-                      <a href="https://drive.google.com/file/d/1JusOGQFmkjaVjfD4kQLPCjKfHKlH5u1N/preview">[Abstract]</a>
+                      <a href="https://docs.google.com/document/d/1C3aBHsVej1FMQTWQ28ycVaX1jU1rXKR4bD5fFLXH45g/edit?usp=sharing">[Report]</a>
                     </td>
               </tr>
             </table>
@@ -162,136 +165,306 @@
 
                 <hr>
 
-         <center><h1>Description</h1></center>
-            <table align=center width=1000px>
-                <tr>
-                        <center>
-                          <a href=''><img class="round" style="width: 700;" src="bot.png"/></a>
-                          <figcaption><i>Vox-Bot CAD design</i></figcaption>
-                        </center>
-              </tr>
-          </table>
-        <br><br>
-        Vox Bot is a four-wheeled robot with omni wheels for maximum agility and mobility. The primary purpose of the robot is to perform vacuum cleaning autonomously in unknown terrain. It houses a Lidar for mapping and an SBC for all computational needs, with one high-power brushless motor for vacuum generation and four brushed motors for exhausts. For the Vacuum system, we have done multiple studies on the airflow, which can be found in the Airflow section. Below, we explain our solution for the problem statement.
-        <br><br>
-          <hr>
+         <center><h1>Task-1</h1></center>
 
-          <center><h1>Pipeline</h1></center>
+        <!-- <br> -->
+        The python wrapper has been meticulously built upon the Pluto ROS package provided as a
+        reference. The python wrapper begins an instant connection with the drone by initiating a class
+        that depends on the various categories used, concepts of multithreading, and TCP
+        communication to maintain continuous communication with the drone. Transmission occurs
+        using the MultiWii Serial Protocol (MSP) between them, encoded and decoded in the reader and
+        writer files.
+        
+      <br><br>
+        
+      <table align=center width=2000px>
+          <tr>
+                  <!-- <center> -->
+                    <a href=''><img class="round" style="width: 540;" align="left" src="task_1_1.png"/></a>
+                    <!-- <figcaption><i>Vox-Bot CAD design</i></figcaption> -->
+                  <!-- </center> -->
+        </tr>
+        <tr>
+          <center>
+            <a href=''><img class="round" style="width: 540;" align="right" src="task_1_2.png"/></a>
+            <!-- <figcaption><i>Vox-Bot CAD design</i></figcaption> -->
+          </center>
+          </tr>
+      </table>        
+        
+        <hr>
 
-          We have modified the Vanilla navigation stack offered in move base ROS. We have used movebase flex for implementing the architecture of the below navigation stack.          <br><br>
+          <center><h1>Task-2</h1></center>
+
+          As per the problem statement, the drone is supposed to hover at a position and move in a 1x2m
+          rectangle maintaining a certain height.<br>
+          The requirements for the same are:
+          <ul>
+            ● <b>Localization</b>: Pose Estimation of ArUco Marker<br>
+            ● <b>Controls</b>: PID for position and height control<br>
+            ● <b>Trajectory</b>: Defines the path for the drone<br><br>
+
+            <b>Camera Used</b>: Logitech BRIO 4K (1080p,60fps)<br>
+            <b>ArUco Marker</b>: 45x45mm and 4x4 bits (marker ID :0)
+
+            <h2><b><u>Localization</u></b></h2>
+            <h3>ArUco Detection and Pose Estimation</h3>
+
+            The Pose Estimation process is as follows:<br><br>
+            1. Calibrated the camera to calculate its intrinsic matrix and distortion coefficients.<br>
+            2. Detected the markers using the ArUco library provided by OpenCV.<br>
+            3. Transformed the point to camera’s coordinate frame by calculating extrinsic matrix by
+            solving the classical PnP using OpenCV’s SolvePnP().<br>
+            4. Corrected the noisy height estimation using Machine Learning to get readings accurate
+            enough for optimal height control.<br><br>
+            The following figure represents the complete coordinate transformation from 2D image plane to
+            3D real world.<br>
+
+          </ul>
           <table align=center width=1000px>
               <tr>
                       <center>
-                        <a href=''><img class="round" style="width: 700;" src="pipeline.png"/></a>
-                        <figcaption><i>Complete Pipeline of our solution</i></figcaption>
+                        <a href=''><img class="round" style="width: 500;" src="lookat.jpg"/></a>
+                        <figcaption><i>Look-At Transformation</i></figcaption>
                       </center>
             </tr>
+          </table>
+          <br>
+
+          Implementing classical pose estimation method using arUco marker detection and coordinates
+          transformation, we found the x and y positions quite accurate. For height, the estimations were
+          satisfactory around the center of camera’s FOV but were quite erroneous around the boundaries.
+          We have shown some samples of observations and the errors associated in table below.
+          <br><br>
+          In order to improve accuracy, machine learning came into the picture.
+
+
+          Below are a brief result that is not present in the proposal
+          <br><br>
+
+          <h3>Pose Correction using Machine Learning</h3>
+
+          The most fascinating and <b>novel</b> part of our approach arrives when we include the use of
+          <b>Machine Learning</b> in order to increase the precision of the drone’s height estimation.
+
+          <h4>Height correction</h4>
+
+          For increasing the precision of height of the marker with respect to ground, we prepared our <b>own
+          dataset</b> with the help of a Time of Flight (ToF) sensor, which is a type of scanner-less LIDAR
+          that uses high-power optical pulses in durations of nanoseconds to capture depth information up
+          to ranges of 8m.<br><br>
+          Likewise, using linear regression on the pose returned from transformed coordinates, and true
+          height from ToF, we predicted the drone's height precisely.
+
+          <h4>Noise and Fluctuation</h4>
+          For better tolerance against noise and fluctuation, we introduce <b>Kalman Filter</b>. The filter
+          combines current acceleration from the imu sensor and pose estimate from the regression
+          function to provide a pose estimate for the next time step. This estimate and the current pose
+          estimate are used to provide the final pose to the controller. Other than smoothing data, it also
+          provides protection against fault cases like the camera failure to localize the drone.
+          <br>
+          <table align=center width=1000px>
+            <tr>
+                    <center>
+                      <a href=''><img class="round" style="width: 700;" src="pose_estimation.png"/></a>
+                      <figcaption><i>Pose Estimation pipeline</i></figcaption>
+                    </center>
+            </tr>
         </table>
-      <br>
-      <ul>
-      <li>We have used <a href="http://wiki.ros.org/multirobot_map_merge">multirobot_map_merge</a> with <a href="http://wiki.ros.org/rrt_exploration">rrt exploration</a> for mapping the environment.</li>
 
-      <li>We have used <a href="https://github.com/ethz-asl/polygon_coverage_planning">polygon_planner</a> for planning the Boustrophedon path.</li>
-      
-      <li>The rest is custom implemented with Fortunes algorithm used for computing voronoi diagrams. More details can be found in our <a href="https://drive.google.com/file/d/1JusOGQFmkjaVjfD4kQLPCjKfHKlH5u1N/preview">Proposal</a>.</li>
-    </ul>
+        <h3>Data</h3>
+        <table align=center width=1000px>
+          <tr>
+                  <center>
+                    <a href=''><img class="round" style="width: 500;" src="data.png"/></a>
+                    <figcaption><i>Ground truth height, ArUco estimated height, and ML estimated height values</i></figcaption>
+                  </center>
+          </tr>
 
-      Below are a brief result that is not present in the proposal
+          <tr>
+            <center>
+              <a href=''><img class="round" style="width: 500;" src="filter.jpg"/></a>
+              <figcaption><i>Height Estimation</i></figcaption>
+            </center>
+          </tr>
+      </table>
+
+
+      <h2><b><u>Control</u></b></h2>
+
+      PID has been implemented to control the movement in the x,y,z directions. PID estimates the
+      value of roll, pitch, and thrust to achieve the required x,y,z coordinates.
       <br><br>
+      We attempted to tune the PID controller for minimizing the error in trajectory traversal. The
+      method includes experimental determination of dynamic characteristics of the control loop and
+      estimating the parameters to produce the desired performance.
+      <br><br>
+      Any change in the pitch and the roll of the drone changes the direction of thrust force hence
+      causing an erroneous movement. To counter this, the component of thrust along the z-direction is
+      taken. Similarly, the drone’s coordinate system is transformed into camera’s coordinate system
+      using yaw values for controlling the x, and y movements. We used <b>trackbars</b> to dynamically
+      tune PID values and <b>matplotlib</b> library to visualize the system’s continuous state and target state
+      continuously.
+      <br><br>
+      The errors in the roll, pitch, and yaw are corrected by the use of the following set of equations:
+
+      <table align=center width=1000px>
+        <tr>
+                <center>
+                  <a href=''><img class="round" style="width: 500;" src="pid_algo.png"/></a>
+                  <figcaption><i>PID Control Equations</i></figcaption>
+                </center>
+        </tr>
+    </table>
+
+    <h2><b><u>Trajectory</u></b></h2>
+
+    In order to move the drone in a certain 1x2 m rectangle, we have made a function that returns a
+    specific list of coordinates for the drone to move and all the movement is controlled by PID.
+    Firstly, we have passed the 3D real-world coordinates of the destination to be reached by the
+    drone.<br><br>
+    A certain number of steps are fixed between the path and therefore the whole path is broken
+    down into several chunks of paths.<br><br>
+    A function continuously checks whether the next checkpoint has been reached by verifying its
+    accuracy with the drone's current coordinates.<br><br>
+    Once, the next checkpoint is reached, the step and next coordinate get updated and the drone
+    moves through all these checkpoints till it reaches its final destination.
+    <br><br>
+
+    <table align=center>
+      <tr>
+          <td width=1000>
+            <center>
+              <!-- METHOD VIDEO HERE -->
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/0F8SiWoXGAI?si=W49fHTuV0a_FLjYE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>            </center>
+          </td>
+      </tr>
+    </table>
+    <br>
     <hr>
+
+    <center><h1>Task-3</h1></center>
+    As per the problem statement, Task 3 asked to control a follower drone that traces a similar path
+    as that of the primary drone, which was completed in Task 2.<br><br>
+    Our solution was to utilize <b>Multi-UAV Swarm Algorithms</b> to achieve an accurate following of
+    the drone.<br><br>
+    A swarm is generally defined as a group of behaving entities that together coordinate to produce
+    a significant or desired result. A swarm of UAVs is a coordinated unit of UAVs that perform a
+    desired task or set of tasks.    <br><br>
+
+    <h2><b><u>Flocking Algorithm</u></b></h2>
+    The 3 simple rules, in a programmable sense concerning our task, are:<br><br>
+    1. Alignment: The follower drone attempts to move in the average direction(or average
+    velocity direction) of the primary drone.<br>
+    2. Cohesion: The follower drone attempts to move toward the average position of the
+    primary drone.<br>
+    3. Repulsion: The follower drone attempts to move away if it gets too close to the primary
+    drone.
+
+    <h3>Alignment</h3>
+
+    The follower drone should look at how it desires to move (a vector pointing to the target),
+    compare that goal with how quickly it is currently moving (its velocity), and apply a force
+    accordingly.
+    <br>
+    <table width=500px>
+      <tr>
+              <!-- <center> -->
+                <a href=''><img class="round" align="right" style="width: 350;" src="alignment.png"/></a>
+                <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+              <!-- </center> -->
+      </tr>
+  </table>
+
+    <div class="box">
+      <pre class="line-numbers">
+        <code class="language-css">
+align(self, target) {
+  Vector desiredVelocity = target.Velocity();
+  Vector steerForce = Vector.sub(desiredVelocity, currentVelocity)
+  steerForce.limit(maxforce);
+  self.applyForce(steer);
+  }
+        </code>
+      </pre>
+    </div>
+
+    <h3>Cohesion</h3>
+
+    The follower drone must also try to move toward the average location of the primary drone.
+    <br>
+    <table width=500px>
+      <tr>
+              <!-- <center> -->
+                <a href=''><img class="round" align="right" style="width: 400;" src="cohesion.png"/></a>
+                <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+              <!-- </center> -->
+      </tr>
+  </table>
+
+    <div class="box">
+      <pre class="line-numbers">
+        <code class="language-css">
+cohesion(self, target) {
+  Vector relPosition = target.Position() - self.Position();
+  Vector steerForce = Vector.sub(relPosition, target.Velocity() );
+  steerForce.limit(maxforce);
+  self.applyForce(steer);
+  }
+        </code>
+      </pre>
+    </div>
+  
+    <h3>Separation</h3>
+
+    The final part of the algorithm is simply to restrict the
+    two drones from getting closer than a threshold distance.  
+       <br>
+    <table width=500px>
+      <tr>
+              <!-- <center> -->
+                <a href=''><img class="round" align="right" style="width: 500;" src="separation.png"/></a>
+                <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+              <!-- </center> -->
+      </tr>
+  </table>
+
+    <div class="box">
+      <pre class="line-numbers">
+        <code class="language-css">
+seperation(self, target) {
+  Vector relPosition = target.Position() - self.Position();
+  distance = relPosition.Magnitude();
+  if distance < threshold:
+      Vector steerForce = -1 * relPosition;
+      steerForce.limit(maxforce);
+      self.applyForce(steer);
+}
     
-    <center><h1>Mapping</h1></center>
-    We have used RRT exploration instead of standard frontier exploration for making it more efficient.
+        </code>
+      </pre>
+    </div>
+  
+
+    <h2><b><u>Implementation</u></b></h2>
+    This entire conception and algorithm were compiled in a simulation using PyBullet and Gym
+    Environment.<br><br>
+    Due to time and hardware constraints, we were unable to transform the simulation into a
+    hardware implementation. However, we achieved a highly accurate path-following algorithm,
+    which precisely guides the follower drone in the correct trajectory.
     <br><br>
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 700;" src="mapping_time.png"/></a>
-                  <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption>
-                </center>
-        </tr>
+    <table align=center>
+      <tr>
+          <td width=1000>
+            <center>
+              <!-- METHOD VIDEO HERE -->
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/tpI8suAL9DM?si=D1z5qhOtYRgipnef" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    </table>
+            </center>
+          </td>
+      </tr>
     </table>
-    <br>
+
     <hr>
-
-    <center><h1>Optimal Coverage</h1></center>
-    We have used Voronoi diagrams and Weighted Centroid Algorithm for distributing the task between individual robots. More details about the same can be found in the proposal.    <br><br>
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 700;" src="voronoi.png"/></a>
-                  <figcaption><i>Generating voronoi diagram using Fortnes algorithm</i></figcaption>
-                </center>
-        </tr><br>
-        <!-- We then iterate using weighted center algorithm for calculating the desired voronoi cells and the positions of each agent. -->
-    </table>
-
-    <!-- <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 400;" src="flow_chart.png"/></a>
-                  <figcaption><i>Weighted center Algorithm</i></figcaption>
-                </center>
-        </tr><br>     
-    </table> -->
-
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 400;" src="optimal_coverage.gif"/></a>
-                  <figcaption><i>Robots computing the path and optimal voronoi cell</i></figcaption>
-                </center>
-        </tr><br>
-    </table>
-<hr>
-    <center><h1>Boustrophedon Path</h1></center>
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 500;" src="bpath1.png"/></a>
-                  <figcaption><i>Path distribution for arena 1</i></figcaption>
-                </center>
-                <center>
-                    <a href=''><img class="round" style="width: 500;" src="bpath2.png"/></a>
-                    <figcaption><i>Path distribution for arena 2</i></figcaption>
-                  </center>
-        </tr>
-    </table>
-    <br>
-    Generating boustrophedon paths for the polygon given by the Voronoi diagram the robot resides in.
-    <br><br>
-    <hr>
-
-    <center><h1>Airflow Study</h1></center>
-
-    <p>
-      The vacuum of the bot works on the principle of the lower fan creating pressure difference to suck in air while the exhaust pushes out the air from the above compartment for efficient vacuum generation. The fan has been placed low for efficient cleaning, with a ground clearance measuring approximately less than half the wheel radius.
-    </p>
-
-    <p>
-      Analysis of the vacuum mechanism was done using the SolidWorks Flow Simulation tool to get outputs about the kind of behavior shown by our vacuum during actual implementation.    </p>
-
-    <p>
-      The simulation required us to cover our rotating regions with circular bounded bodies to define the rotation boundary. We also defined the inlet and outlet velocities as 0.6m/s and 0.15m/s below the bot and at the exhausts, respectively. As the simulation was an internal one, the image only shows the flow inside our bot, but the fact is quite evident through the trajectory of the arrows that in real-world scenarios, the vox would undoubtedly be an efficient vacuum design.    </p>
-    <br>
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 700;" src="airflow-study.png"/></a>
-                  <figcaption><i>Hypothetical system of the robot with full suction power</i></figcaption>
-                </center>
-                <br>
-                <center>
-                    <a href=''><img class="round" style="width: 500;" src="airflow-closeup.png"/></a>
-                    <figcaption><i>Airflow inside the central chamber</i></figcaption>
-                  </center>
-        </tr>
-    </table>
-    <br>
-    <hr>
-
-
-
 
         <table align=center width=1100px>
         <tr>
