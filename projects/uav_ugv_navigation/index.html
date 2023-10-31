@@ -128,17 +128,21 @@
     <table align=center width=1000px>
         <tr>
                 <center>
-                  <a href=''><img class="round" style="width: 400;" src="path.png"/></a>
+                  <a href=''><img class="round" style="width: 700;" src="overview.png"/></a>
                 </center>
       </tr>
   </table>
             <br><br>
 
             <!-- <br> -->
-            The main objective of this project was to make an efficient multi-agent algorithm for cleaning an unknown terrain,
-             for which we built <a href="https://github.com/phoenixrider12/Vox-Bot">“Vox-Bot,”</a> a ROS package for a multi-robot platform. 
-             This is our solution submitted for AIITRA Robotics Challenge 2021, where we <b>secured second position</b> among all other IITs 
-             and prestigious colleges of India.
+            This is our solution to the DRDO Navigation Challege in Inter IIT Tech Meet 10.0 In the problem statement, we were asked to use a UAV to explore and
+            map a mountainous terrain during summer time. After mapping, the UAV must be used to guide a UGV to traverse through the
+            terrain during the winter time when roads are covered with snow.<br>
+            <br>Key points from the PS<br>
+            • The UAV has an IMU, a GPS and a RGBD camera as sensors.<br>
+            • The UGV has no sensor.<br>
+            • The mapping needs to be completed in the textured world while
+            the UGV navigates in the untextured world.
             <br><br>
 
           <!-- <br> -->
@@ -146,15 +150,15 @@
           <table align=center width=180px>
               <tr>
                   <td><span style="font-size:14pt">
-                      <a href="https://github.com/phoenixrider12/Vox-Bot">[Code]</a>
+                      <a href="https://github.com/phoenixrider12/DRDO-UAV-Guided-UGV-Navigation/tree/master">[Code]</a>
                     </td>
 
                     <td><span style="font-size:14pt">
-                      <a href="https://docs.google.com/presentation/d/15Tr9ttaVZmQwHbguTARzjeVO22R2nE5FTYrOWf2-XHw/edit?usp=sharing">[Slides]</a>
+                      <a href="https://docs.google.com/presentation/d/1wgCw-pj4WYZ1QgIoMBwp1pqgJasY5RpXskZN9Sr_edU/edit?usp=sharing">[Slides]</a>
                     </td>
 
                   <td><span style="font-size:14pt">
-                      <a href="https://drive.google.com/file/d/1JusOGQFmkjaVjfD4kQLPCjKfHKlH5u1N/preview">[Abstract]</a>
+                      <a href="https://github.com/phoenixrider12/DRDO-UAV-Guided-UGV-Navigation/blob/master/MP_DR_T14_Mid.pdf">[Report]</a>
                     </td>
               </tr>
             </table>
@@ -162,137 +166,186 @@
 
                 <hr>
 
-         <center><h1>Description</h1></center>
-            <table align=center width=1000px>
-                <tr>
-                        <center>
-                          <a href=''><img class="round" style="width: 700;" src="bot.png"/></a>
-                          <figcaption><i>Vox-Bot CAD design</i></figcaption>
-                        </center>
-              </tr>
-          </table>
-        <br><br>
-        Vox Bot is a four-wheeled robot with omni wheels for maximum agility and mobility. The primary purpose of the robot is to perform vacuum cleaning autonomously in unknown terrain. It houses a Lidar for mapping and an SBC for all computational needs, with one high-power brushless motor for vacuum generation and four brushed motors for exhausts. For the Vacuum system, we have done multiple studies on the airflow, which can be found in the Airflow section. Below, we explain our solution for the problem statement.
-        <br><br>
-          <hr>
+         <center><h1>Approach</h1></center>
+        <!-- <br> -->
+        The project is divided into three parts:<br>
+        <ul>
+        <li><b>Mapping</b>: We segmented roads based in UAV Camera feed using U-Net, and used frontier exploration to map the
+        entire terrain.</li>
+        <li><b>UAV Localization and Control</b>: We used Ardupilot coupled with our own control and
+        planning algorithms for UAV control. The UAV localization was
+        done by filtering and combining the GPS and IMU data.</li>
+        <li><b>UGV Localization and Control</b>: For
+        localization of UGV, we used Yolov5 on
+        the UAV camera feed and localized it relative to the UAV. We used the
+        <i>Se2_Navigation</i> and <i>Navfn</i> RIS packages for path planning and UGV control.</li>
+        </ul>
+        <br>
+        
+        <hr>
 
-          <center><h1>Pipeline</h1></center>
+          <center><h1>UAV Localization</h1></center>
 
-          We have modified the Vanilla navigation stack offered in move base ROS. We have used movebase flex for implementing the architecture of the below navigation stack.          <br><br>
+          In the problem
+          statement, we were provided with GPS and IMU sensors on the UAV. We fused the incoming data from these sensors using <b>Extended Kalman Filter </b>to produce our desired odometry.
+          The node <i>ekf_localization</i> in <a href="https://wiki.ros.org/robot_localization"><i>robot_localization</i></a> ROS package provided us with the 15D odometry. Maximum observed error after multiple-goal points turned out to be ±0.5 meters in all three axes.
+          <br><br>
+
           <table align=center width=1000px>
               <tr>
-                      <center>
-                        <a href=''><img class="round" style="width: 700;" src="pipeline.png"/></a>
-                        <figcaption><i>Complete Pipeline of our solution</i></figcaption>
-                      </center>
+                      <!-- <center> -->
+                        <a href=''><img class="round" align="left" style="width: 525;" src="uav_loc.png"/></a>
+                        <!-- <figcaption><i>Complete Pipeline of our solution</i></figcaption> -->
+
+                        <a href=''><img class="round" align="right" style="width: 525;" src="uav_loc.gif"/></a>
+                        <!-- <figcaption><i>Complete Pipeline of our solution</i></figcaption> -->
+                      <!-- </center> -->
             </tr>
         </table>
       <br>
-      <ul>
-      <li>We have used <a href="http://wiki.ros.org/multirobot_map_merge">multirobot_map_merge</a> with <a href="http://wiki.ros.org/rrt_exploration">rrt exploration</a> for mapping the environment.</li>
-
-      <li>We have used <a href="https://github.com/ethz-asl/polygon_coverage_planning">polygon_planner</a> for planning the Boustrophedon path.</li>
-      
-      <li>The rest is custom implemented with Fortunes algorithm used for computing voronoi diagrams. More details can be found in our <a href="https://drive.google.com/file/d/1JusOGQFmkjaVjfD4kQLPCjKfHKlH5u1N/preview">Proposal</a>.</li>
-    </ul>
-
-      Below are a brief result that is not present in the proposal
-      <br><br>
-    <hr>
     
-    <center><h1>Mapping</h1></center>
-    We have used RRT exploration instead of standard frontier exploration for making it more efficient.
-    <br><br>
+<hr>
+
+    <center><h1>Terrain Mapping</h1></center>
+    <!-- <br> -->
     <table align=center width=1000px>
         <tr>
                 <center>
-                  <a href=''><img class="round" style="width: 700;" src="mapping_time.png"/></a>
-                  <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption>
+                  <a href=''><img class="round" style="width: 900;" src="mapping_flow.png"/></a>
+                  <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
                 </center>
         </tr>
     </table>
     <br>
-    <hr>
 
-    <center><h1>Optimal Coverage</h1></center>
-    We have used Voronoi diagrams and Weighted Centroid Algorithm for distributing the task between individual robots. More details about the same can be found in the proposal.    <br><br>
+    <h2><b><u>Road Segmentation</u></b></h2>
+      We prepared a dataset containing simulated environment images and manually annotated them using <a href="https://www.cvat.ai/">CVAT</a>. Then we fit a <b>UNET</b> to segment the roads in those images. For better training, we used standard augmentation techniques and obtained ~96% accuracy on testing data. More details can be found in our <a href="https://github.com/phoenixrider12/DRDO-UAV-Guided-UGV-Navigation/blob/master/MP_DR_T14_Mid.pdf">report</a>.
+    <br><br>
+      <table align=center width=1000px>
+      <tr>
+              <center>
+                <a href=''><img class="round" style="width: 900;" src="unet_results.png"/></a>
+                <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption>
+              </center>
+      </tr>
+  </table>
+<br>
+
+  <table align=center width=1000px>
+    <tr>
+            <center>
+              <a href=''><img class="round" style="width: 700;" src="mapping_block.png"/></a>
+              <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption>
+            </center>
+    </tr>
+</table>
+<br><br>
+The mapping performed by the UAV has been implemented using
+the <a href="http://wiki.ros.org/rtabmap_ros">RTABMAP</a> ROS package. The package uses RGB-D SLAM approach
+and create a 2D Occupancy grid map using the 3D
+pointcloud values obtained by RGBD camera atop the drone.<br><br>
+The package takes in the values from the camera as well as the
+odometry, and publishes the projected 2D map of the 3D environment.
+<br><br>
+Next, we implemented the Frontier Exploration approach using the
+<a href="http://wiki.ros.org/explore_lite">Frontier_Exploration</a> ROS package in order to explore the world terrain.
+Frontiers are regions on the boundary between open space and
+unexplored space. By moving to a new frontier, we can keep building
+the map of the environment, until there are no new frontiers left to
+detect.
+
+<br><br>
+
+<table align=center width=1000px>
+  <tr>
+          <!-- <center> -->
+            <a href=''><img class="round" align="left" style="width: 500;" src="rtabmap.jpg"/></a>
+            <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+          <!-- </center> -->
+  </tr>
+
+<tr>
+  <!-- <center> -->
+    <a href=''><img class="round" align="right" style="width: 500;" src="frontier.gif"/></a>
+    <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+  <!-- </center> -->
+</tr>
+</table>
+<br>
+<hr>
+
+    <center><h1>UGV Navigation</h1></center>
     <table align=center width=1000px>
         <tr>
                 <center>
-                  <a href=''><img class="round" style="width: 700;" src="voronoi.png"/></a>
-                  <figcaption><i>Generating voronoi diagram using Fortnes algorithm</i></figcaption>
+                  <a href=''><img class="round" style="width: 900;" src="nav_flow.png"/></a>
+                  <!-- <figcaption><i>Generating voronoi diagram using Fortnes algorithm</i></figcaption> -->
                 </center>
-        </tr><br>
+        </tr>
         <!-- We then iterate using weighted center algorithm for calculating the desired voronoi cells and the positions of each agent. -->
     </table>
 
-    <!-- <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 400;" src="flow_chart.png"/></a>
-                  <figcaption><i>Weighted center Algorithm</i></figcaption>
-                </center>
-        </tr><br>     
-    </table> -->
+    <h2><b><u>UGV Detection and Tracking</u></b></h2>
 
     <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 400;" src="optimal_coverage.gif"/></a>
-                  <figcaption><i>Robots computing the path and optimal voronoi cell</i></figcaption>
-                </center>
-        </tr><br>
-    </table>
-<hr>
-    <center><h1>Boustrophedon Path</h1></center>
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 500;" src="bpath1.png"/></a>
-                  <figcaption><i>Path distribution for arena 1</i></figcaption>
-                </center>
-                <center>
-                    <a href=''><img class="round" style="width: 500;" src="bpath2.png"/></a>
-                    <figcaption><i>Path distribution for arena 2</i></figcaption>
-                  </center>
-        </tr>
+      <tr>
+              <center>
+                <a href=''><img class="round" style="width: 800;" src="ugv_detect_flow.png"/></a>
+                <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption>
+              </center>
+      </tr>
     </table>
     <br>
-    Generating boustrophedon paths for the polygon given by the Voronoi diagram the robot resides in.
+    <table align=center width=1000px>
+    <tr>
+      <!-- <center> -->
+        <a href=''><img class="round" align="left" style="width: 500;" src="ugv_detect.png"/></a>
+        <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+      <!-- </center> -->
+
+      <!-- <center> -->
+        <a href=''><img class="round" align="right" style="width: 500;" src="ugv_track.gif"/></a>
+        <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+      <!-- </center> -->
+    </tr>
+    </table>
+    <br>
+    <h2><b><u>UGV Controls</u></b></h2>
+
+    For UGV control Pure Pursuit Controller was used which is a path tracking algorithm.It computes the angular velocity command that moves the robot from its current position to reach some look-ahead point in front of the robot.
     <br><br>
-    <hr>
-
-    <center><h1>Airflow Study</h1></center>
-
-    <p>
-      The vacuum of the bot works on the principle of the lower fan creating pressure difference to suck in air while the exhaust pushes out the air from the above compartment for efficient vacuum generation. The fan has been placed low for efficient cleaning, with a ground clearance measuring approximately less than half the wheel radius.
-    </p>
-
-    <p>
-      Analysis of the vacuum mechanism was done using the SolidWorks Flow Simulation tool to get outputs about the kind of behavior shown by our vacuum during actual implementation.    </p>
-
-    <p>
-      The simulation required us to cover our rotating regions with circular bounded bodies to define the rotation boundary. We also defined the inlet and outlet velocities as 0.6m/s and 0.15m/s below the bot and at the exhausts, respectively. As the simulation was an internal one, the image only shows the flow inside our bot, but the fact is quite evident through the trajectory of the arrows that in real-world scenarios, the vox would undoubtedly be an efficient vacuum design.    </p>
-    <br>
     <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 700;" src="airflow-study.png"/></a>
-                  <figcaption><i>Hypothetical system of the robot with full suction power</i></figcaption>
-                </center>
-                <br>
-                <center>
-                    <a href=''><img class="round" style="width: 500;" src="airflow-closeup.png"/></a>
-                    <figcaption><i>Airflow inside the central chamber</i></figcaption>
-                  </center>
-        </tr>
-    </table>
-    <br>
-    <hr>
+      <tr>
+        <!-- <center> -->
+          <a href=''><img class="round" align="left" style="width: 500;" src="ugv_control_block.png"/></a>
+          <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+        <!-- </center> -->
+  
+        <!-- <center> -->
+          <a href=''><img class="round" align="right" style="width: 500;" src="ugv_control.png"/></a>
+          <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+        <!-- </center> -->
+      </tr>
+      </table>
+      <br>
+      <h2><b><u>UGV Planning</u></b></h2>
 
+      <a href=''><img class="round" align="right" style="width: 300;" src="ugv_planning.png"/></a>
+      
+      <ul>
+      <li><b>Local Planner-OMPL(Open Motion Planning Library)</b> is a collection of state-of-the-art sampling-based motion planning algorithms.</li>
+      <li><b>Global Planner-TEB (Timed Elastic Band)</b> locally optimizes the robot's trajectory with respect to trajectory execution time, separation from obstacles and compliance with kinodynamic constraints at runtime.</li>
+      </ul>
 
-
-
+      We used <a href="https://github.com/leggedrobotics/se2_navigation">se2_navigation</a> ROS package
+      which subscribes to the odometry topic of car with respect
+      to a suitable odom frame to receive car's odometry w.r.t initial starting position
+      and orientation of the drone.<br><br>
+      Now when we publish a suitable goal point in the same odom frame, the
+      <i>se2 OMPL planner</i> inside this package plans a proper trajectory for the
+      car to follow which is a sequential array of poses in the odometry frame.
+      <br><br>
+      <hr> 
         <table align=center width=1100px>
         <tr>
         <td>
