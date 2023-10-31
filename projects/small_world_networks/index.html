@@ -128,17 +128,14 @@
     <table align=center width=1000px>
         <tr>
                 <center>
-                  <a href=''><img class="round" style="width: 400;" src="path.png"/></a>
+                  <a href=''><img class="round" style="width: 600;" src="small_world.png"/></a>
                 </center>
       </tr>
   </table>
             <br><br>
 
             <!-- <br> -->
-            The main objective of this project was to make an efficient multi-agent algorithm for cleaning an unknown terrain,
-             for which we built <a href="https://github.com/phoenixrider12/Vox-Bot">“Vox-Bot,”</a> a ROS package for a multi-robot platform. 
-             This is our solution submitted for AIITRA Robotics Challenge 2021, where we <b>secured second position</b> among all other IITs 
-             and prestigious colleges of India.
+            This project aims to develop a predictive model for identifying faulty sensor nodes in small world IoT networks. The proposed approach uses Actor-Critic Reinforcement Learning to introduce small world characteristics in the network and leverages ML algorithms and network analysis techniques to detect and predict faulty sensor nodes. We conducted several experiments to validate our approach's effectiveness using simulated small world IoT networks and analyzed major network parameters like Lifetime, Energy Consumption, Latency, and Throughput. Our results came out to be promising and comparatively better than the existing state of the art.
             <br><br>
 
           <!-- <br> -->
@@ -146,15 +143,15 @@
           <table align=center width=180px>
               <tr>
                   <td><span style="font-size:14pt">
-                      <a href="https://github.com/phoenixrider12/Vox-Bot">[Code]</a>
+                      <a href="#">[Code]</a>
                     </td>
 
                     <td><span style="font-size:14pt">
-                      <a href="https://docs.google.com/presentation/d/15Tr9ttaVZmQwHbguTARzjeVO22R2nE5FTYrOWf2-XHw/edit?usp=sharing">[Slides]</a>
+                      <a href="https://docs.google.com/presentation/d/1tEmpKW1WuS5YF-kOod68OaBXXA-uT42HTm8UrCv7Xl4/edit?usp=sharing">[Slides]</a>
                     </td>
 
                   <td><span style="font-size:14pt">
-                      <a href="https://drive.google.com/file/d/1JusOGQFmkjaVjfD4kQLPCjKfHKlH5u1N/preview">[Abstract]</a>
+                      <a href="https://docs.google.com/document/d/1m-3kWzKlFeyUswC65PTfnNGThCYujZLb9wJ3u7WnKUk/edit?usp=sharing">[Report]</a>
                     </td>
               </tr>
             </table>
@@ -162,136 +159,187 @@
 
                 <hr>
 
-         <center><h1>Description</h1></center>
-            <table align=center width=1000px>
-                <tr>
-                        <center>
-                          <a href=''><img class="round" style="width: 700;" src="bot.png"/></a>
-                          <figcaption><i>Vox-Bot CAD design</i></figcaption>
-                        </center>
-              </tr>
-          </table>
+         <center><h1>Fault Node Detection</h1></center>
         <br><br>
-        Vox Bot is a four-wheeled robot with omni wheels for maximum agility and mobility. The primary purpose of the robot is to perform vacuum cleaning autonomously in unknown terrain. It houses a Lidar for mapping and an SBC for all computational needs, with one high-power brushless motor for vacuum generation and four brushed motors for exhausts. For the Vacuum system, we have done multiple studies on the airflow, which can be found in the Airflow section. Below, we explain our solution for the problem statement.
+        Sensor nodes possess low initial energies and tend to fail or die during data routing through a large IoT network. For efficient data transmission with optimal energy consumption and lifetime, we need to predict nodes that tend to fail so that we can eliminate them from the network. We prepare our own fault node dataset using a simulated IoT network by adding noise to network properties. Using that dataset, we trained various ML algorithms for anomaly/outlier detection and tested them on our network. The algorithms and obtained results are described below.
         <br><br>
-          <hr>
+        1. One Class SVM<br>
+        2. Elliptic Envelope<br>
+        3. Isolation Forest<br>
+        4. Local Outlier Factor<br>
+        5. Density-Based Spatial Clustering (DBSCAN)<br>
+        <!-- <br><br> -->
 
-          <center><h1>Pipeline</h1></center>
+    <table align=center width=1000px>
+        <tr>
+                  <!-- <center> -->
+                    <a href=''><img class="round" style="width: 500;" src="accuracy_5.png"/></a>
+                    <!-- <figcaption><i>Vox-Bot CAD design</i></figcaption> -->
+                  <!-- </center> -->
+        </tr>
+        <tr>
+          <!-- <center> -->
+            <a href=''><img class="round" style="width: 500;" src="accuracy_10.png"/></a>
+            <!-- <figcaption><i>Vox-Bot CAD design</i></figcaption> -->
+          <!-- </center> -->
+        </tr>
 
-          We have modified the Vanilla navigation stack offered in move base ROS. We have used movebase flex for implementing the architecture of the below navigation stack.          <br><br>
-          <table align=center width=1000px>
-              <tr>
-                      <center>
-                        <a href=''><img class="round" style="width: 700;" src="pipeline.png"/></a>
-                        <figcaption><i>Complete Pipeline of our solution</i></figcaption>
-                      </center>
-            </tr>
-        </table>
-      <br>
-      <ul>
-      <li>We have used <a href="http://wiki.ros.org/multirobot_map_merge">multirobot_map_merge</a> with <a href="http://wiki.ros.org/rrt_exploration">rrt exploration</a> for mapping the environment.</li>
+        <tr>
+          <!-- <center> -->
+            <a href=''><img class="round" style="width: 500;" src="f1score_5.png"/></a>
+            <!-- <figcaption><i>Vox-Bot CAD design</i></figcaption> -->
+          <!-- </center> -->
+        </tr>
+        <tr>
+          <!-- <center> -->
+            <a href=''><img class="round" style="width: 500;" src="f1score_10.png"/></a>
+            <!-- <figcaption><i>Vox-Bot CAD design</i></figcaption> -->
+          <!-- </center> -->
+        </tr>
+    </table>
+    <br>
+    From these results, we can see that DBSCAN is the most optimal approach for our task. It has outperformed the other popular approaches and has better values of shown metrics.
+    <br><br>
+    Hence, we selected <b>DBSCAN</b> for our pipeline and integrated it with data routing in our small world networks. Fault node prediction improved the network performance by increasing its lifetime and decreasing energy consumption, as discussed in later sections.
+    <br><br>
+    <hr>
 
-      <li>We have used <a href="https://github.com/ethz-asl/polygon_coverage_planning">polygon_planner</a> for planning the Boustrophedon path.</li>
-      
-      <li>The rest is custom implemented with Fortunes algorithm used for computing voronoi diagrams. More details can be found in our <a href="https://drive.google.com/file/d/1JusOGQFmkjaVjfD4kQLPCjKfHKlH5u1N/preview">Proposal</a>.</li>
-    </ul>
+    <center><h1>Small World Networks</h1></center>
+    
+    <a href=''><img class="round" style="width: 300;" align="right" src="apl_acc.png"/></a>
+    <!-- <figcaption><i>Complete Pipeline of our solution</i></figcaption> -->
 
-      Below are a brief result that is not present in the proposal
-      <br><br>
+    Small World is a phenomenon, first observed in the social connectivity of people. Here we are using small world phenomenon in the context of WSNs. Introducing a small world in wireless sensor networks means introducing long-range links between nodes, decreasing the Average Path Length(APL) and Average Clustering Coefficient(ACC). It makes the network well-connected, efficiently transmitting data with high lifetime, throughput, low energy consumption, and latency.
+    
+    <br><br>
+    While adding small world in WSNs, we introduce long-
+    range links which brings the network in the small-world
+    region. We need an algorithm which can efficiently
+    introduce the links such that the network gets the most 
+    optimal small world characteristics.
+
+    <br><br>
+
+    <h2><b><u>Actor-Critic Reinforcement Learning</u></b></h2>
+
+    Soft Actor-Critic Algorithm is based on a maximum entropy RL where the objective is to find the optimal policy that maximizes the expected long-term reward and long-term entropy. In a simple description, actor-critic is a combination of policy-based and value-based approaches. Learning of the actor is based policy gradient approach and critic is learned in a value-based fashion. In SAC, there are three networks: the actor network, the critic network, and the value network.
+    <table align=center width=1000px>
+      <tr>
+              <center>
+                <a href=''><img class="round" style="width: 700;" src="sac.png"/></a>
+                <figcaption><i>Soft Actor Critic Algorithm</i></figcaption>
+              </center>
+      </tr>
+  </table>
+
+  <h2><b><u>Using SAC in WSNs</u></b></h2>
+
+  We are using the SAC algorithm to introduce long-range links in the network. We define the algorithm as follows:
+  <br>
+  1. <b>Environment</b>: The simulated WSN serves as the environment for SAC<br>
+  2. <b>State</b>: The network graph serves as the state of the network<br>
+  3. <b>Action</b>: The node IDs that need to be connected are actions<br>
+  4. <b>Reward</b>: Reward is defined in terms of ACC and APL as follows:<br>
+  <br>
+  <table align=center width=1000px>
+    <tr>
+            <center>
+              <a href=''><img class="round" style="width: 300;" src="reward.png"/></a>
+              <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+            </center>
+    </tr>
+</table>
+
+    <h2><b><u>Small World Results</u></b></h2>
+
+    Here we show results for a 500mX500m network with 400 nodes.<br><br>
+
+    <h3>Links Introduced with Sink Node</h3>
+    <table align=center width=1000px>
+      <tr>
+              <center>
+                <a href=''><img class="round" style="width: 700;" src="tosink.png"/></a>
+                <figcaption><i>APL-ACC Comparison with Small World</i></figcaption>
+              </center>
+      </tr>
+  </table>    
+  <br>
+  <table align=center width=1000px>
+    <tr>
+            <!-- <center> -->
+              <a href=''><img class="round" style="width: 550;" src="conv_network.png"/></a>
+              <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+            <!-- </center> -->
+    </tr>
+    <tr>
+      <!-- <center> -->
+        <a href=''><img class="round" style="width: 550;" src="sink_network.png"/></a>
+        <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+      <!-- </center> -->
+</tr>
+</table>
+
+<h3>Links Introduced Within Nodes</h3>
+
+<table align=center width=1000px>
+  <tr>
+          <center>
+            <a href=''><img class="round" style="width: 700;" src="nosink.png"/></a>
+            <figcaption><i>APL-ACC Comparison with Small World</i></figcaption>
+          </center>
+  </tr>
+</table>    
+<br>
+<table align=center width=1000px>
+<tr>
+        <!-- <center> -->
+          <a href=''><img class="round" style="width: 550;" src="conv_network.png"/></a>
+          <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+        <!-- </center> -->
+</tr>
+<tr>
+  <!-- <center> -->
+    <a href=''><img class="round" style="width: 550;" src="nosink_network.png"/></a>
+    <!-- <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption> -->
+  <!-- </center> -->
+</tr>
+</table>
+<br>
     <hr>
     
-    <center><h1>Mapping</h1></center>
-    We have used RRT exploration instead of standard frontier exploration for making it more efficient.
-    <br><br>
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 700;" src="mapping_time.png"/></a>
-                  <figcaption><i>Comparision of exploration time with different number of bots</i></figcaption>
-                </center>
-        </tr>
-    </table>
+    <center><h1>Data Routing</h1></center>
+    We analyze and compare the performance of obtained small-world networks with conventional netwworks by routing data across the network. We also tend to study the effect of fault node detection. We calculated the following metrics for comparison.
+    <br><br>1. Energy Consumption
+    <br>2. Network Lifetime
+    <br>3. Throughput
+    <br>4. Latency
+    
     <br>
+
+    <h2><b><u>Performance Analysis</u></b></h2>
+
+    <h3>Small World WSN vs Conventional WSN</h3>
+    <ul>
+    <li>High Lifetime</li>
+    <li>Low Latency</li>
+    <li>Less Average Energy Consumed</li>
+    <li>High Throughput</li>
+    <li>Less Number of Hops</li>
+    </ul>
+
+    <h3>Small World WSN vs Direct Transmission</h3>
+    <ul>
+    <li>High Lifetime</li>
+    <li>Less Average Energy Consumed</li>
+    </ul>
+    
+    <h3>Effect of Fault Node Prediction</h3>
+    <ul>
+    <li>High Lifetime</li>
+    <li>High Throughput</li>
+    </ul>
+
     <hr>
-
-    <center><h1>Optimal Coverage</h1></center>
-    We have used Voronoi diagrams and Weighted Centroid Algorithm for distributing the task between individual robots. More details about the same can be found in the proposal.    <br><br>
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 700;" src="voronoi.png"/></a>
-                  <figcaption><i>Generating voronoi diagram using Fortnes algorithm</i></figcaption>
-                </center>
-        </tr><br>
-        <!-- We then iterate using weighted center algorithm for calculating the desired voronoi cells and the positions of each agent. -->
-    </table>
-
-    <!-- <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 400;" src="flow_chart.png"/></a>
-                  <figcaption><i>Weighted center Algorithm</i></figcaption>
-                </center>
-        </tr><br>     
-    </table> -->
-
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 400;" src="optimal_coverage.gif"/></a>
-                  <figcaption><i>Robots computing the path and optimal voronoi cell</i></figcaption>
-                </center>
-        </tr><br>
-    </table>
-<hr>
-    <center><h1>Boustrophedon Path</h1></center>
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 500;" src="bpath1.png"/></a>
-                  <figcaption><i>Path distribution for arena 1</i></figcaption>
-                </center>
-                <center>
-                    <a href=''><img class="round" style="width: 500;" src="bpath2.png"/></a>
-                    <figcaption><i>Path distribution for arena 2</i></figcaption>
-                  </center>
-        </tr>
-    </table>
-    <br>
-    Generating boustrophedon paths for the polygon given by the Voronoi diagram the robot resides in.
-    <br><br>
-    <hr>
-
-    <center><h1>Airflow Study</h1></center>
-
-    <p>
-      The vacuum of the bot works on the principle of the lower fan creating pressure difference to suck in air while the exhaust pushes out the air from the above compartment for efficient vacuum generation. The fan has been placed low for efficient cleaning, with a ground clearance measuring approximately less than half the wheel radius.
-    </p>
-
-    <p>
-      Analysis of the vacuum mechanism was done using the SolidWorks Flow Simulation tool to get outputs about the kind of behavior shown by our vacuum during actual implementation.    </p>
-
-    <p>
-      The simulation required us to cover our rotating regions with circular bounded bodies to define the rotation boundary. We also defined the inlet and outlet velocities as 0.6m/s and 0.15m/s below the bot and at the exhausts, respectively. As the simulation was an internal one, the image only shows the flow inside our bot, but the fact is quite evident through the trajectory of the arrows that in real-world scenarios, the vox would undoubtedly be an efficient vacuum design.    </p>
-    <br>
-    <table align=center width=1000px>
-        <tr>
-                <center>
-                  <a href=''><img class="round" style="width: 700;" src="airflow-study.png"/></a>
-                  <figcaption><i>Hypothetical system of the robot with full suction power</i></figcaption>
-                </center>
-                <br>
-                <center>
-                    <a href=''><img class="round" style="width: 500;" src="airflow-closeup.png"/></a>
-                    <figcaption><i>Airflow inside the central chamber</i></figcaption>
-                  </center>
-        </tr>
-    </table>
-    <br>
-    <hr>
-
-
-
 
         <table align=center width=1100px>
         <tr>
