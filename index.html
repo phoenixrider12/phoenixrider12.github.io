@@ -11,6 +11,17 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script>
+			function changeImage() {
+				// Replace 'your-hover-image.jpg' with the path to your hover image
+				document.getElementById("hover-image").src = "images/image2.jpg";
+			}
+		
+			function restoreImage() {
+				// Replace 'your-initial-image.jpg' with the path to your initial image
+				document.getElementById("hover-image").src = "images/image.jpeg";
+			}
+		</script>
 	</head>
 	<body class="is-preload">
 
@@ -51,18 +62,6 @@
 										<!-- <img src="images/image.jpeg"/> -->
 
 										<img id="hover-image" src="images/image.jpeg" alt="Initial Image" onmouseover="changeImage()" onmouseout="restoreImage()">
-
-										<script>
-											function changeImage() {
-												// Replace 'your-hover-image.jpg' with the path to your hover image
-												document.getElementById("hover-image").src = "images/image2.jpg";
-											}
-										
-											function restoreImage() {
-												// Replace 'your-initial-image.jpg' with the path to your initial image
-												document.getElementById("hover-image").src = "images/image.jpeg";
-											}
-										</script>
 
 									</span>
 								</section>
