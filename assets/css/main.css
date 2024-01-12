@@ -2289,19 +2289,3 @@ button,
   /* object-fit: cover; */
   /* object-position: center; */
 }
-
-.worldmap{
-  /* display: none; */
-  width: 200px;
-  margin-left: auto;
-  /* position: sticky; */
-  /* bottom: 0px; */
-  /* right: 0px; */
-  /* position: fixed; */
-  /* bottom: 0px; */
-  /* right: 0px; */
-  /* opacity: 40%; */
-}
-/* .worldmap:hover{ */
-  /* opacity: 100%; */
-/* } */

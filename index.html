@@ -5,310 +5,263 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
+	<head>
+		<title>Aryaman Gupta</title>
+		<link rel="icon" type="image/x-icon" href="images/phoenix.jpg">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script>
+			function changeImage() {
+				// Replace 'your-hover-image.jpg' with the path to your hover image
+				document.getElementById("hover-image").src = "images/image2.jpg";
+			}
+		
+			function restoreImage() {
+				// Replace 'your-initial-image.jpg' with the path to your initial image
+				document.getElementById("hover-image").src = "images/image.jpeg";
+			}
+		</script>
+	</head>
+	<body class="is-preload">
 
-<head>
-	<title>Aryaman Gupta</title>
-	<link rel="icon" type="image/x-icon" href="images/phoenix.jpg">
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<script>
-		function changeImage() {
-			// Replace 'your-hover-image.jpg' with the path to your hover image
-			document.getElementById("hover-image").src = "images/image2.jpg";
-		}
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-		function restoreImage() {
-			// Replace 'your-initial-image.jpg' with the path to your initial image
-			document.getElementById("hover-image").src = "images/image.jpeg";
-		}
-	</script>
-</head>
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
 
-<body class="is-preload">
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Aryaman</strong> Gupta</a>
+									<ul class="icons">
+										<li><a href="https://github.com/phoenixrider12" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="https://www.linkedin.com/in/aryaman1210/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
 
-	<!-- Wrapper -->
-	<div id="wrapper">
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+										<header>
+											<h1>Hi, I’m Aryaman</h1>
+											<p><b>I am senior undergraduate of Electronics Engineering at Indian Institute of Technology (BHU), Varanasi.</b></p>
+										</header>
+										<p>I'm working with <a href="https://smlbansal.github.io/">Prof. Somil Bansal</a> at <a href="https://smlbansal.github.io/sia-lab/index.html">Safe and Intelligent Autonomy Lab</a> on <i>Safety-Critical Control of Autonomous Agents</i>.</p>
+										<p> I've also been working with <a href="https://carleton.ca/hhashim/">Prof. Hashim Mohamed</a> on <i>Deep-RL Based Docking Mechanism for VTOL UAVs on Offshore Platforms.</i></p>
+										<p>I've previously worked with <a href="https://ece.iisc.ac.in/bharadwaj-amrutur/">Dr. Bharadwaj Amrutur</a> at <a href="https://cps.iisc.ac.in/">RBBCPS, IISc</a> on <i>Mult-Agent Exploration and Dynamic Obstacle Avoidance</i>.</p>
+										<p><b>My research is focussed on developing Learning-Based Perception and Control Systems with Formal Safety Analysis for Autonomous Agents</b>.</p>
+										
+										<ul class="actions">
+											<li><a href="assets/Resume.pdf" class="button big">RESUME</a></li>
+											<li><a href="https://scholar.google.com/citations?user=AWhTyqwAAAAJ&hl=en&oi=ao" class="button big">Google Scholar</a></li>
+										</ul>
+									</div>
+									<span class="image object">
+										<!-- <img src="images/image.jpeg"/> -->
 
-		<!-- Main -->
-		<div id="main">
-			<div class="inner">
+										<img id="hover-image" src="images/image.jpeg" alt="Initial Image" onmouseover="changeImage()" onmouseout="restoreImage()">
 
-				<!-- Header -->
-				<header id="header">
-					<a href="index.html" class="logo"><strong>Aryaman</strong> Gupta</a>
-					<ul class="icons">
-						<li><a href="https://github.com/phoenixrider12" class="icon brands fa-github"><span
-									class="label">GitHub</span></a></li>
-						<li><a href="https://www.linkedin.com/in/aryaman1210/" class="icon brands fa-linkedin"><span
-									class="label">LinkedIn</span></a></li>
-					</ul>
-				</header>
+									</span>
+								</section>
 
-				<!-- Banner -->
-				<section id="banner">
-					<div class="content">
-						<header>
-							<h1>Hi, I’m Aryaman</h1>
-							<p><b>I am senior undergraduate of Electronics Engineering at Indian Institute of Technology
-									(BHU), Varanasi.</b></p>
-						</header>
-						<p>I'm working with <a href="https://smlbansal.github.io/">Prof. Somil Bansal</a> at <a
-								href="https://smlbansal.github.io/sia-lab/index.html">Safe and Intelligent Autonomy
-								Lab</a> on <i>Safety-Critical Control of Autonomous Agents</i>.</p>
-						<p> I've also been working with <a href="https://carleton.ca/hhashim/">Prof. Hashim Mohamed</a>
-							on <i>Deep-RL Based Docking Mechanism for VTOL UAVs on Offshore Platforms.</i></p>
-						<p>I've previously worked with <a href="https://ece.iisc.ac.in/bharadwaj-amrutur/">Dr. Bharadwaj
-								Amrutur</a> at <a href="https://cps.iisc.ac.in/">RBBCPS, IISc</a> on <i>Mult-Agent
-								Exploration and Dynamic Obstacle Avoidance</i>.</p>
-						<p><b>My research is focussed on developing Learning-Based Perception and Control Systems with
-								Formal Safety Analysis for Autonomous Agents</b>.</p>
+							<!-- Section -->
+								<section id="news">
+									<header class="major">
+										<h2>News</h2>
+									</header>
+										<ul>
+												<li><b>[Nov 2023]</b> : New paper on drone docking on offshore platforms using deep-RL submitted to IEEE Transactions on Artificial Intelligence.</li>
+												<li><b>[Sept 2023]</b> : New <a href="https://arxiv.org/pdf/2309.13475.pdf">paper</a> on mitigating system-level failures in visual controllers is out on arxiv.</li>
+												<li><b>[Sept 2023]</b> : New <a href="https://arxiv.org/pdf/2309.13475.pdf">paper</a> on mitigating system-level failures in visual controllers submitted to ICRA 2024.</li>
+												<li><b>[May 2023]</b> : Started Research Internship at SIA Lab, USC.</li>
+												<li><b>[Jan 2023]</b> : Started Research Internship at Carleton University.</li>
+												<li><b>[Dec 2022]</b> : Appointed as Tech Lead of <a href="https://robotics-club-iit-bhu.github.io/RoboReG/">RoboReG</a>.</li>
+												<li><b>[May 2022]</b> : Started Research Internship at RBCCPS, IISc.</li>
+												<li><b>[Mar 2022]</b> : Started Research Internship at AISL, CWNU</li>
+												<li><b>[Dec 2021]</b> : First Runner Up in AIITRA Robotics Challenge</li>
+												<li><b>[Nov 2020]</b> : Started B.Tech in Electronics Engineering at IIT BHU</li>
+										</ul>
+								</section>
 
-						<ul class="actions">
-							<li><a href="assets/Resume.pdf" class="button big">RESUME</a></li>
-							<li><a href="https://scholar.google.com/citations?user=AWhTyqwAAAAJ&hl=en&oi=ao"
-									class="button big">Google Scholar</a></li>
-						</ul>
-					</div>
-					<span class="image object">
-						<!-- <img src="images/image.jpeg"/> -->
+							<!-- Section -->
+							<section id="publications">
+								<div class="icra_image">
+									<div>
 
-						<img id="hover-image" src="images/image.jpeg" alt="Initial Image" onmouseover="changeImage()"
-							onmouseout="restoreImage()">
+										<header class="major">
+											<h2>Publications</h2>
+										</header>
+										
+										<h3> Detecting and Mitigating System-Level Anomalies of Vision-Based Controllers </h3>
+										<!-- Capturing system-level failures of vision-based controllers and mitigting them using fallback mechanisms for ensuring safety in autonomous systems. -->
+										<!-- <p></p> -->
+										<p>
+											<b>Aryaman Gupta</b>, Kaustav Chakraborty, Somil Bansal
+										</p>
+										<ul class="actions">
+											<li><a href="FailureMitigation" class="button small">Website</a></li>
+											<li><a href="https://arxiv.org/pdf/2309.13475.pdf" class="button small">PDF</a></li>
+											<li><a href="https://www.youtube.com/watch?v=Z9DtIEBrSvs&t=4s" class="button small">Video</a></li>
+											<li><a href="https://github.com/phoenixrider12/visual_failure_mitigation" class="button small">Code</a></li>
+										</ul>
+									</div>
+									<div>
+										<img src="papers/failure_mitigation/icra.png" />
+									</div>
+								</div>
 
-					</span>
-				</section>
+								<div>
+									
+									<h3> Deep Reinforcement Learning for Sim2Real Policy Transfer in VTOL-UAVs Offshore Docking Operations </h3>
+									<!-- Capturing system-level failures of vision-based controllers and mitigting them using fallback mechanisms for ensuring safety in autonomous systems. -->
+									<!-- <p></p> -->
+									<p>
+										<b>Aryaman Gupta</b>, Ali Mohamed Ali, Hashim A.Hashim
+									</p>
+									<ul class="actions">
+										<li><a href="#" class="button small">Website</a></li>
+										<li><a href="#" class="button small">PDF</a></li>
+										<li><a href="#" class="button small">Video</a></li>
+										<li><a href="#" class="button small">Code</a></li>
+									</ul>
+								</div>
 
-				<!-- Section -->
-				<section id="news">
-					<header class="major">
-						<h2>News</h2>
-					</header>
-					<ul>
-						<li><b>[Nov 2023]</b> : New paper on drone docking on offshore platforms using deep-RL submitted
-							to IEEE Transactions on Artificial Intelligence.</li>
-						<li><b>[Sept 2023]</b> : New <a href="https://arxiv.org/pdf/2309.13475.pdf">paper</a> on
-							mitigating system-level failures in visual controllers is out on arxiv.</li>
-						<li><b>[Sept 2023]</b> : New <a href="https://arxiv.org/pdf/2309.13475.pdf">paper</a> on
-							mitigating system-level failures in visual controllers submitted to ICRA 2024.</li>
-						<li><b>[May 2023]</b> : Started Research Internship at SIA Lab, USC.</li>
-						<li><b>[Jan 2023]</b> : Started Research Internship at Carleton University.</li>
-						<li><b>[Dec 2022]</b> : Appointed as Tech Lead of <a
-								href="https://robotics-club-iit-bhu.github.io/RoboReG/">RoboReG</a>.</li>
-						<li><b>[May 2022]</b> : Started Research Internship at RBCCPS, IISc.</li>
-						<li><b>[Mar 2022]</b> : Started Research Internship at AISL, CWNU</li>
-						<li><b>[Dec 2021]</b> : First Runner Up in AIITRA Robotics Challenge</li>
-						<li><b>[Nov 2020]</b> : Started B.Tech in Electronics Engineering at IIT BHU</li>
-					</ul>
-				</section>
-
-				<!-- Section -->
-				<section id="publications">
-					<div class="icra_image">
-						<div>
-
-							<header class="major">
-								<h2>Publications</h2>
-							</header>
-
-							<h3> Detecting and Mitigating System-Level Anomalies of Vision-Based Controllers </h3>
-							<!-- Capturing system-level failures of vision-based controllers and mitigting them using fallback mechanisms for ensuring safety in autonomous systems. -->
-							<!-- <p></p> -->
-							<p>
-								<b>Aryaman Gupta</b>, Kaustav Chakraborty, Somil Bansal
-							</p>
-							<ul class="actions">
-								<li><a href="FailureMitigation" class="button small">Website</a></li>
-								<li><a href="https://arxiv.org/pdf/2309.13475.pdf" class="button small">PDF</a></li>
-								<li><a href="https://www.youtube.com/watch?v=Z9DtIEBrSvs&t=4s"
-										class="button small">Video</a></li>
-								<li><a href="https://github.com/phoenixrider12/visual_failure_mitigation"
-										class="button small">Code</a></li>
-							</ul>
-						</div>
-						<div>
-							<img src="papers/failure_mitigation/icra.png" />
-						</div>
-					</div>
-
-					<div>
-
-						<h3> Deep Reinforcement Learning for Sim2Real Policy Transfer in VTOL-UAVs Offshore Docking
-							Operations </h3>
-						<!-- Capturing system-level failures of vision-based controllers and mitigting them using fallback mechanisms for ensuring safety in autonomous systems. -->
-						<!-- <p></p> -->
-						<p>
-							<b>Aryaman Gupta</b>, Ali Mohamed Ali, Hashim A.Hashim
-						</p>
-						<ul class="actions">
-							<li><a href="#" class="button small">Website</a></li>
-							<li><a href="#" class="button small">PDF</a></li>
-							<li><a href="#" class="button small">Video</a></li>
-							<li><a href="#" class="button small">Code</a></li>
-						</ul>
-					</div>
-
-				</section>
-
-				<!-- Section -->
-				<section id="experience">
-					<div class="experience">
-						<div>
-							<header class="major">
-								<h2>Experience</h2>
-							</header>
-
-							<h3>University of Southern California</h3>
-							<p>
-								<b>Research Intern | <a href="https://smlbansal.github.io/">Prof. Somil Bansal</a> |</b>
-								May 2023 - Present <br>
-								<!-- <i>May 2023 - Present</i> <br> -->
-								Working on mitigating system-level failures of vision-based controllers in aircraft
-								taxiing and ground robot navigation tasks.
-							</p>
-							<!-- <ul class="actions">
+							</section>
+							
+							<!-- Section -->
+							<section id="experience">
+								<div class="experience">
+									<div>
+										<header class="major">
+											<h2>Experience</h2>
+										</header>
+						
+										<h3>University of Southern California</h3>
+										<p>
+											<b>Research Intern | <a href="https://smlbansal.github.io/">Prof. Somil Bansal</a> |</b> May 2023 - Present <br>
+											<!-- <i>May 2023 - Present</i> <br> -->
+											Working on mitigating system-level failures of vision-based controllers in aircraft taxiing and ground robot navigation tasks.
+										</p>
+										<!-- <ul class="actions">
+											<li><a href="failure_mitigation" class="button small">Website</a></li>
+											<li><a href="https://arxiv.org/pdf/2309.13475.pdf" class="button small">PDF</a></li>
+											<li><a href="https://www.youtube.com/watch?v=Z9DtIEBrSvs&t=4s" class="button small">Video</a></li>
+											<li><a href="https://github.com/phoenixrider12/visual_failure_mitigation" class="button small">Code</a></li>
+										</ul> -->
+									
+										<h3>Carleton University</h3>
+										<p>
+											<b>Research Intern | <a href="https://carleton.ca/hhashim/">Dr. Hashim Mohamed</a> |</b> Jan 2023 - Dec 2023 <br>
+											<!-- <i>May 2023 - Present</i> <br> -->
+											Working on developing a deep-RL based docking mechanism for VTOL UAVs on offshore platforms.
+										</p>
+										<!-- <ul class="actions">
 											<li><a href="failure_mitigation" class="button small">Website</a></li>
 											<li><a href="https://arxiv.org/pdf/2309.13475.pdf" class="button small">PDF</a></li>
 											<li><a href="https://www.youtube.com/watch?v=Z9DtIEBrSvs&t=4s" class="button small">Video</a></li>
 											<li><a href="https://github.com/phoenixrider12/visual_failure_mitigation" class="button small">Code</a></li>
 										</ul> -->
 
-							<h3>Carleton University</h3>
-							<p>
-								<b>Research Intern | <a href="https://carleton.ca/hhashim/">Dr. Hashim Mohamed</a> |</b>
-								Jan 2023 - Dec 2023 <br>
-								<!-- <i>May 2023 - Present</i> <br> -->
-								Working on developing a deep-RL based docking mechanism for VTOL UAVs on offshore
-								platforms.
-							</p>
-							<!-- <ul class="actions">
+										<h3>Indian Institute of Science</h3>
+										<p>
+											<b>Research Intern | <a href="https://ece.iisc.ac.in/bharadwaj-amrutur/">Dr. Bharadwaj Amrutur</a> |</b> May 2022 - July 2022 <br>
+											<!-- <i>May 2023 - Present</i> <br> -->
+											Worked on multi-agent exploration using RRT-based methods and dynamic obstacle avoidance using 3D object detection.
+										</p>
+										<!-- <ul class="actions">
 											<li><a href="failure_mitigation" class="button small">Website</a></li>
 											<li><a href="https://arxiv.org/pdf/2309.13475.pdf" class="button small">PDF</a></li>
 											<li><a href="https://www.youtube.com/watch?v=Z9DtIEBrSvs&t=4s" class="button small">Video</a></li>
 											<li><a href="https://github.com/phoenixrider12/visual_failure_mitigation" class="button small">Code</a></li>
 										</ul> -->
 
-							<h3>Indian Institute of Science</h3>
-							<p>
-								<b>Research Intern | <a href="https://ece.iisc.ac.in/bharadwaj-amrutur/">Dr. Bharadwaj
-										Amrutur</a> |</b> May 2022 - July 2022 <br>
-								<!-- <i>May 2023 - Present</i> <br> -->
-								Worked on multi-agent exploration using RRT-based methods and dynamic obstacle avoidance
-								using 3D object detection.
-							</p>
-							<!-- <ul class="actions">
+										<h3>Changwon National University</h3>
+										<p>
+											<b>Research Intern | <a href="http://islab.cwnu.ac.kr/professor.htm">Dr. Oh-Seol Kwon</a> |</b> Mar 2022 - July 2022 <br>
+											<!-- <i>May 2023 - Present</i> <br> -->
+											Worked on combining Faster R-CNN and Edge Enhanced SRGAN architectures for enhanced object detection in low resolution aerial images.
+										</p>
+										<!-- <ul class="actions">
 											<li><a href="failure_mitigation" class="button small">Website</a></li>
 											<li><a href="https://arxiv.org/pdf/2309.13475.pdf" class="button small">PDF</a></li>
 											<li><a href="https://www.youtube.com/watch?v=Z9DtIEBrSvs&t=4s" class="button small">Video</a></li>
 											<li><a href="https://github.com/phoenixrider12/visual_failure_mitigation" class="button small">Code</a></li>
 										</ul> -->
 
-							<h3>Changwon National University</h3>
-							<p>
-								<b>Research Intern | <a href="http://islab.cwnu.ac.kr/professor.htm">Dr. Oh-Seol
-										Kwon</a> |</b> Mar 2022 - July 2022 <br>
-								<!-- <i>May 2023 - Present</i> <br> -->
-								Worked on combining Faster R-CNN and Edge Enhanced SRGAN architectures for enhanced
-								object detection in low resolution aerial images.
-							</p>
-							<!-- <ul class="actions">
-											<li><a href="failure_mitigation" class="button small">Website</a></li>
-											<li><a href="https://arxiv.org/pdf/2309.13475.pdf" class="button small">PDF</a></li>
-											<li><a href="https://www.youtube.com/watch?v=Z9DtIEBrSvs&t=4s" class="button small">Video</a></li>
-											<li><a href="https://github.com/phoenixrider12/visual_failure_mitigation" class="button small">Code</a></li>
-										</ul> -->
+									</div>
+								</div>
 
-						</div>
-					</div>
-
-				</section>
-
-				<!-- Section -->
-				<section id="projects">
-					<header class="major">
-						<h2>Projects</h2>
-					</header>
-					<div class="posts">
-						<article>
-							<a href="projects/multi_agent_coverage/" class="image"><img src="images/aiitra2.png"
-									alt="" /></a>
-							<h3>Multi-Agent Warehouse Coverage & Cleaning</h3>
-							<p>Efficient coverage and cleaning of unknown terrains using multiple ground robots.</p>
-							<ul class="actions">
-								<li><a href="projects/multi_agent_coverage/" class="button small">Website</a></li>
-								<li><a href="https://github.com/phoenixrider12/Vox-Bot" class="button small">Code</a>
-								</li>
-								<li><a href="https://docs.google.com/presentation/d/15Tr9ttaVZmQwHbguTARzjeVO22R2nE5FTYrOWf2-XHw/edit?usp=sharing"
-										class="button small">Report</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="projects/exploration_and_obstacle_avoidance/" class="image"><img
-									src="images/iisc_project.png" alt="" /></a>
-							<h3>Mult-Agent Exploration & Dynamic Obstacle Avoidance</h3>
-							<p>RRT-Exploration and visual obstacle detection and avoidance package.</p>
-							<ul class="actions">
-								<li><a href="projects/exploration_and_obstacle_avoidance/"
-										class="button small">Website</a></li>
-								<li><a href="hhttps://github.com/phoenixrider12/Multi-VOLTA-Exploration-and-Dynamic-Map-Updates"
-										class="button small">Code</a></li>
-								<li><a href="https://docs.google.com/presentation/d/1aI4XAEJ03-eVSFvvPp1vc2dhd3e40BZHbnoN6kscu6A/edit?usp=sharing"
-										class="button small">Report</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="projects/uav_swarming/" class="image"><img src="images/drona.png" alt="" /></a>
-							<h3>UAV Control and Swarming</h3>
-							<p>Cascaded PID-based control and swarm motion of drones.</p>
-							<ul class="actions">
-								<li><a href="projects/uav_swarming/" class="button small">Website</a></li>
-								<li><a href="https://github.com/phoenixrider12/Drona_Aviation_Pluto_Swarm_Challenge"
-										class="button small">Code</a></li>
-								<li><a href="https://drive.google.com/file/d/1MfTUgXobM4bYxJc3moGjneKoeCTwPCv5/view?usp=sharing"
-										class="button small">Report</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="projects/household_bot/" class="image"><img src="images/mphb.gif" alt="" /></a>
-							<h3>Multi-Purpose Household Robot</h3>
-							<p>Fabricated a ground robot to perform household chores and child care.</p>
-							<ul class="actions">
-								<li><a href="projects/household_bot/" class="button small">Website</a></li>
-								<li><a href="https://github.com/phoenixrider12/Multi-Purpose-HouseHold-Bot"
-										class="button small">Code</a></li>
-								<li><a href="https://drive.google.com/file/d/1LK5S5EnnhTdDiMbbFOUx6peoZhiU1zt4/view?usp=sharing"
-										class="button small">Report</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="projects/small_world_networks/" class="image"><img src="images/btp.png"
-									alt="" /></a>
-							<h3>Small World IoT Networks</h3>
-							<p>Enhanced network performance by introducing small-world phenomenon using actor-critic
-								reinforcement learning.</p>
-							<ul class="actions">
-								<li><a href="projects/small_world_networks/" class="button small">Website</a></li>
-								<li><a href="https://github.com/phoenixrider12/Small-World-IoT-Networks"
-										class="button small">Code</a></li>
-								<li><a href="https://drive.google.com/file/d/1HTRFOVvWIN-C2Wldn28KJDyPwLPyEHQW/view"
-										class="button small">Report</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="projects/uav_ugv_navigation/" class="image"><img src="images/uav_ugv.gif"
-									alt="" /></a>
-							<h3>UAV Guided UGV Navigation</h3>
-							<p>UAV aided mapping and localization for a UGV to autonomously traverse in mountainous
-								terrains.</p>
-							<ul class="actions">
-								<li><a href="projects/uav_ugv_navigation/" class="button small">Website</a></li>
-								<li><a href="https://github.com/phoenixrider12/DRDO-UAV-Guided-UGV-Navigation"
-										class="button small">Code</a></li>
-								<li><a href="https://docs.google.com/presentation/d/1wgCw-pj4WYZ1QgIoMBwp1pqgJasY5RpXskZN9Sr_edU/edit?usp=sharing"
-										class="button small">Report</a></li>
-							</ul>
-						</article>
-						<!-- <article>
+							</section>	
+							
+							<!-- Section -->
+								<section id="projects">
+									<header class="major">
+										<h2>Projects</h2>
+									</header>
+									<div class="posts">
+										<article>
+											<a href="projects/multi_agent_coverage/" class="image"><img src="images/aiitra2.png" alt=""/></a>
+											<h3>Multi-Agent Warehouse Coverage & Cleaning</h3>
+											<p>Efficient coverage and cleaning of unknown terrains using multiple ground robots.</p>
+											<ul class="actions">
+												<li><a href="projects/multi_agent_coverage/" class="button small">Website</a></li>
+												<li><a href="https://github.com/phoenixrider12/Vox-Bot" class="button small">Code</a></li>
+												<li><a href="https://docs.google.com/presentation/d/15Tr9ttaVZmQwHbguTARzjeVO22R2nE5FTYrOWf2-XHw/edit?usp=sharing" class="button small">Report</a></li>
+											</ul>
+										</article>
+										<article>
+											<a href="projects/exploration_and_obstacle_avoidance/" class="image"><img src="images/iisc_project.png" alt=""/></a>
+											<h3>Mult-Agent Exploration & Dynamic Obstacle Avoidance</h3>
+											<p>RRT-Exploration and visual obstacle detection and avoidance package.</p>
+											<ul class="actions">
+												<li><a href="projects/exploration_and_obstacle_avoidance/" class="button small">Website</a></li>
+												<li><a href="hhttps://github.com/phoenixrider12/Multi-VOLTA-Exploration-and-Dynamic-Map-Updates" class="button small">Code</a></li>
+												<li><a href="https://docs.google.com/presentation/d/1aI4XAEJ03-eVSFvvPp1vc2dhd3e40BZHbnoN6kscu6A/edit?usp=sharing" class="button small">Report</a></li>
+											</ul>
+										</article>
+										<article>
+											<a href="projects/uav_swarming/" class="image"><img src="images/drona.png" alt="" /></a>
+											<h3>UAV Control and Swarming</h3>
+											<p>Cascaded PID-based control and swarm motion of drones.</p>
+											<ul class="actions">
+												<li><a href="projects/uav_swarming/" class="button small">Website</a></li>
+												<li><a href="https://github.com/phoenixrider12/Drona_Aviation_Pluto_Swarm_Challenge" class="button small">Code</a></li>
+												<li><a href="https://drive.google.com/file/d/1MfTUgXobM4bYxJc3moGjneKoeCTwPCv5/view?usp=sharing" class="button small">Report</a></li>
+											</ul>
+										</article>
+										<article>
+											<a href="projects/household_bot/" class="image"><img src="images/mphb.gif" alt="" /></a>
+											<h3>Multi-Purpose Household Robot</h3>
+											<p>Fabricated a ground robot to perform household chores and child care.</p>
+											<ul class="actions">
+												<li><a href="projects/household_bot/" class="button small">Website</a></li>
+												<li><a href="https://github.com/phoenixrider12/Multi-Purpose-HouseHold-Bot" class="button small">Code</a></li>
+												<li><a href="https://drive.google.com/file/d/1LK5S5EnnhTdDiMbbFOUx6peoZhiU1zt4/view?usp=sharing" class="button small">Report</a></li>
+											</ul>
+										</article>
+										<article>
+											<a href="projects/small_world_networks/" class="image"><img src="images/btp.png" alt="" /></a>
+											<h3>Small World IoT Networks</h3>
+											<p>Enhanced network performance by introducing small-world phenomenon using actor-critic reinforcement learning.</p>
+											<ul class="actions">
+												<li><a href="projects/small_world_networks/" class="button small">Website</a></li>
+												<li><a href="https://github.com/phoenixrider12/Small-World-IoT-Networks" class="button small">Code</a></li>
+												<li><a href="https://drive.google.com/file/d/1HTRFOVvWIN-C2Wldn28KJDyPwLPyEHQW/view" class="button small">Report</a></li>
+											</ul>
+										</article>
+										<article>
+											<a href="projects/uav_ugv_navigation/" class="image"><img src="images/uav_ugv.gif" alt="" /></a>
+											<h3>UAV Guided UGV Navigation</h3>
+											<p>UAV aided mapping and localization for a UGV to autonomously traverse in mountainous terrains.</p>
+											<ul class="actions">
+												<li><a href="projects/uav_ugv_navigation/" class="button small">Website</a></li>
+												<li><a href="https://github.com/phoenixrider12/DRDO-UAV-Guided-UGV-Navigation" class="button small">Code</a></li>
+												<li><a href="https://docs.google.com/presentation/d/1wgCw-pj4WYZ1QgIoMBwp1pqgJasY5RpXskZN9Sr_edU/edit?usp=sharing" class="button small">Report</a></li>
+											</ul>
+										</article>
+										<!-- <article>
 											<a href="projects/pipe_traversal_bot/" class="image"><img src="images/ptb.png" alt="" /></a>
 											<h3>Pipe Traversal Robot</h3>
 											<p>16-DoF Quadruped trained using DDPG algorithm for movement in subterranean pipes environment.</p>
@@ -348,38 +301,34 @@
 												<li><a href="https://docs.google.com/presentation/d/1JJ--6UHFh02VZ0OyQScio4vEjmKr1QLc/edit?usp=sharing&ouid=110229048173610613882&rtpof=true&sd=true" class="button small">Report</a></li>
 											</ul>
 										</article> -->
+									</div>
+								</section>
+						</div>
 					</div>
-				</section>
-			</div>
-			<div id="worldmap" class="worldmap">
-				<script type="text/javascript" id="clustrmaps" width="10%"
-					src="https://clustrmaps.com/map_v2.js?d=hhWzLsriQArkaGZVtesinkEc8TVVmJOucpupd7YiRCg&cl=ffffff&w=a"></script>
-			</div>
-		</div>
 
-		<!-- Sidebar -->
-		<div id="sidebar">
-			<div class="inner">
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
 
-				<!-- Search -->
-				<!-- <section id="search" class="alt">
+							<!-- Search -->
+								<!-- <section id="search" class="alt">
 									<form method="post" action="#">
 										<input type="text" name="query" id="query" placeholder="Search" />
 									</form>
 								</section> -->
 
-				<!-- Menu -->
-				<nav id="menu">
-					<header class="major">
-						<h2>Menu</h2>
-					</header>
-					<ul>
-						<li><a href="index.html">Homepage</a></li>
-						<li><a href="#news">News</a></li>
-						<li><a href="#publications">Publications</a></li>
-						<li><a href="#experience">Experience</a></li>
-						<li><a href="#projects">Projects</a></li>
-						<!-- <li>
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li><a href="#news">News</a></li>
+										<li><a href="#publications">Publications</a></li>
+										<li><a href="#experience">Experience</a></li>
+										<li><a href="#projects">Projects</a></li>
+										<!-- <li>
 											<span class="opener">Submenu</span>
 											<ul>
 												<li><a href="#">Lorem Dolor</a></li>
@@ -388,11 +337,11 @@
 												<li><a href="#">Feugiat Veroeros</a></li>
 											</ul>
 										</li> -->
-					</ul>
-				</nav>
+									</ul>
+								</nav>
 
-				<!-- Section -->
-				<!-- <section>
+							<!-- Section -->
+								<!-- <section>
 									<header class="major">
 										<h2>Ante interdum</h2>
 									</header>
@@ -415,57 +364,38 @@
 									</ul>
 								</section> -->
 
-				<!-- Section -->
-				<section>
-					<header class="major">
-						<h2>Contact Me</h2>
-					</header>
-					<!-- <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p> -->
-					<ul class="contact">
-						<li class="icon solid fa-envelope">aryaman.gupta.ece20@itbhu.ac.in</li>
-						<li class="icon solid fa-phone">+91 97797-17444</li>
-						<li class="icon solid fa-home">33, Karan Vihar<br />
-							Karnal, Haryana, India - 132001</li>
-					</ul>
-				</section>
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Contact Me</h2>
+									</header>
+									<!-- <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p> -->
+									<ul class="contact">
+										<li class="icon solid fa-envelope">aryaman.gupta.ece20@itbhu.ac.in</li>
+										<li class="icon solid fa-phone">+91 97797-17444</li>
+										<li class="icon solid fa-home">33, Karan Vihar<br />
+										Karnal, Haryana, India - 132001</li>
+									</ul>
+								</section>
 
-				<!-- Footer -->
-				<footer id="footer">
-					<p class="copyright">&copy; Aryaman Gupta. All rights reserved.</p>
-				</footer>
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Aryaman Gupta. All rights reserved.</p>
+								</footer>
+
+						</div>
+					</div>
 
 			</div>
-		</div>
 
-	</div>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<!-- <script>
-		document.addEventListener('DOMContentLoaded', function () {
-			const hiddenDiv = document.getElementById('worldmap');
+			<!-- <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=hhWzLsriQArkaGZVtesinkEc8TVVmJOucpupd7YiRCg&cl=ffffff&w=a"></script> -->
 
-			function checkScroll() {
-				const windowHeight = window.innerHeight;
-				const scrollPosition = window.scrollY;
-				const triggerHeight = windowHeight * 0.9;
-
-				if (scrollPosition >= triggerHeight) {
-					hiddenDiv.style.display = 'block';
-				} else {
-					hiddenDiv.style.display = 'none';
-				}
-			}
-
-			window.addEventListener('scroll', checkScroll);
-			checkScroll(); // Check on initial load
-		});
-	</script> -->
-
-</body>
-
+	</body>
 </html>
