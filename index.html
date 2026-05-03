@@ -308,10 +308,10 @@
 							</section>	
 							
 							<!-- Section -->
-								<section id="projects">
-									<header class="major">
-										<h2>Projects</h2>
-									</header>
+								<section id="projects" class="collapsed">
+									<header class="major" id="projects-header">
+										<h2>Fun Projects <span class="toggle-icon fas fa-chevron-down"></span></h2>
+									</header><br><br>
 									<div class="posts">
 										<article>
 											<a href="projects/multi_agent_coverage/" class="image"><img src="images/aiitra2.png" alt=""/></a>
@@ -538,6 +538,20 @@
             </style>
 
             <!-- <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=hhWzLsriQArkaGZVtesinkEc8TVVmJOucpupd7YiRCg&cl=ffffff&w=a"></script> -->
+
+			<script>
+                // Projects Dropdown functionality
+                document.addEventListener('DOMContentLoaded', function() {
+                    const projectsHeader = document.getElementById('projects-header');
+                    const projectsSection = document.getElementById('projects');
+                    
+                    if (projectsHeader && projectsSection) {
+                        projectsHeader.addEventListener('click', function() {
+                            projectsSection.classList.toggle('collapsed');
+                        });
+                    }
+                });
+            </script>
 
 	</body>
 </html>
