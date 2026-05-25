@@ -27,4 +27,4 @@ Hi, I'm Aryaman, a Ph.D. candidate at [Stanford University](https://www.stanford
 
 My research focuses on uncovering failure patterns in robotic systems for their continuous improvement. I aim to: (a) bake safety mechanisms into their design, and (b) ensure reliable and robust operation at runtime through lightweight guardrails.
 
-Get an [overview](/assets/pdf/Aryaman_Research_Overview.pdf) of my research, grab my [resume](/assets/pdf/Resume.pdf), or find my work on [Google Scholar](https://scholar.google.com/citations?user=AWhTyqwAAAAJ&hl=en). Feel free to reach out — always happy to chat about robotics, AI, and tech in general.
+Get an [overview](/assets/pdf/Aryaman_Research_Overview.pdf) of my research, grab my [resume](/assets/pdf/Resume.pdf), or find my work on [Google Scholar](https://scholar.google.com/citations?user=AWhTyqwAAAAJ&hl=en). Feel free to reach out — I'm always happy to chat about robotics, AI, and tech in general.
