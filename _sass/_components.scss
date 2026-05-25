@@ -217,14 +217,13 @@ ul.task-list input[type="checkbox"] {
 
 // Social icons shown under the profile photo (home page)
 .profile-socials {
-  margin-top: 0.6rem;
-  text-align: center;
-  font-size: 1.5rem;
-  line-height: 1.8;
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
 
   a {
-    margin: 0 0.4rem;
-
     i::before {
       color: var(--global-text-color);
       transition-property: all 0.2s ease-in-out;
