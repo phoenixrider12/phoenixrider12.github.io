@@ -8,13 +8,9 @@ profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>Durand Building, Room 204</p>
-    <p>Stanford, CA 94305</p>
-    <p>aryamann [at] stanford.edu</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+social: false # bottom social row disabled; icons are shown under the photo instead (see _layouts/about.liquid)
 
 announcements:
   enabled: true # includes a list of news items
