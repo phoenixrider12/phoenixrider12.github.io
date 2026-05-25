@@ -1,0 +1,15 @@
+"ICRA":
+  url: https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra
+  color: "#00369f"
+
+"ANTS":
+  url: https://ants2024.ieee-comsoc-ants.org/
+  color: "#8c1515"
+
+"ASOC":
+  url: https://www.sciencedirect.com/journal/applied-soft-computing
+  color: "#1f8a4c"
+
+"Preprint":
+  url: https://arxiv.org/
+  color: "#b31b1b"

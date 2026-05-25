@@ -1,0 +1,102 @@
+cv:
+  name: Aryaman Gupta
+  label: PhD Student, Aeronautics & Astronautics
+  email: aryamann@stanford.edu
+  location: Stanford, CA
+  image: ""
+  summary: >
+    PhD student in Aeronautics and Astronautics at Stanford University, working on safe and
+    reliable learning-based control for autonomous systems — learning from deployment-time data
+    to uncover failure patterns, baking safety into system design, and ensuring reliable runtime
+    operation through lightweight guardrails.
+
+  social_networks:
+    - network: GitHub
+      username: phoenixrider12
+    - network: LinkedIn
+      username: aryaman1210
+    - network: X
+      username: Aryaman1020
+
+  sections:
+    Education:
+      - institution: Stanford University
+        location: Stanford, CA, USA
+        url: https://www.stanford.edu/
+        area: Aeronautics and Astronautics
+        studyType: Doctor of Philosophy (Ph.D.)
+        start_date: 2025-01
+        end_date: ""
+        highlights:
+          - Advised by Prof. Somil Bansal in the SIA Lab.
+          - Working on failure-guided closed-loop learning, lightweight runtime guardrails, and safety alignment of large generalist policies.
+
+      - institution: Indian Institute of Technology (BHU) Varanasi
+        location: Varanasi, India
+        url: https://iitbhu.ac.in/
+        area: Electronics Engineering
+        studyType: Bachelor of Technology (B.Tech.)
+        start_date: 2020-11
+        end_date: 2024-05
+        highlights:
+          - Bachelor thesis under Prof. Om Jee Pandey on efficient data routing in optimal small-world wireless sensor networks using deep-RL.
+
+    Experience:
+      - company: University of Southern California (SIA Lab)
+        position: Research Intern
+        location: Los Angeles, CA, USA
+        url: https://smlbansal.github.io/sia-lab/
+        start_date: 2023-05
+        end_date: 2024-08
+        summary: Advised by Prof. Somil Bansal.
+        highlights:
+          - Mitigating system-level failures of vision-based controllers in aircraft taxiing and ground-robot navigation using reachability analysis.
+
+      - company: Carleton University (RNCSL)
+        position: Research Intern
+        location: Ottawa, Canada
+        url: https://carleton.ca/rncsl/
+        start_date: 2023-01
+        end_date: 2023-12
+        summary: Advised by Dr. Hashim A. Hashim.
+        highlights:
+          - Developed a deep-RL-based docking mechanism for VTOL UAVs on offshore platforms.
+
+      - company: Indian Institute of Science (RBBCPS)
+        position: Research Intern
+        location: Bengaluru, India
+        url: https://cps.iisc.ac.in/
+        start_date: 2022-05
+        end_date: 2022-07
+        summary: Advised by Dr. Bharadwaj Amrutur.
+        highlights:
+          - Multi-agent exploration using RRT-based methods and dynamic obstacle avoidance using 3D object detection.
+
+      - company: Changwon National University (VAIL)
+        position: Research Intern
+        location: Changwon, South Korea
+        url: http://islab.cwnu.ac.kr/
+        start_date: 2022-03
+        end_date: 2022-07
+        summary: Advised by Dr. Oh-Seol Kwon.
+        highlights:
+          - Combined Faster R-CNN and edge-enhanced SRGAN architectures for enhanced object detection in low-resolution aerial images.
+
+    Awards:
+      - title: Best Paper Award
+        awarder: IEEE ANTS 2024
+        date: 2024-12
+        summary: 'For "Node Fault Prediction Assisted Small-World IoT Networks Using ML Frameworks: Towards Performance Improvement".'
+
+    Skills:
+      - name: Programming
+        icon: fa-solid fa-code
+        keywords: "Python, C++, ROS, PyTorch, TensorFlow, JAX"
+
+      - name: Robotics
+        icon: fa-solid fa-robot
+        keywords: "SLAM, Motion Planning, Control, Reachability Analysis, Multi-Agent Systems"
+
+      - name: Machine Learning
+        icon: fa-solid fa-brain
+        keywords: "Reinforcement Learning, Deep Learning, Computer Vision, Safe & Robust Control"
