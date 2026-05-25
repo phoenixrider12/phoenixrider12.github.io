@@ -80,7 +80,9 @@ ul.task-list input[type="checkbox"] {
 
 @media (min-width: 576px) {
   .profile {
-    width: 30%;
+    // Photo is square, so width also sets its rendered height. Tuned down
+    // from 30% to roughly match the vertical height of the shortened bio.
+    width: 25%;
 
     .address {
       p {
