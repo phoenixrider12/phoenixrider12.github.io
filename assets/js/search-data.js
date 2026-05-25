@@ -115,11 +115,6 @@ ninja.data = [{
           description: "UAV-aided mapping and localization enabling a UGV to autonomously traverse mountainous terrain — our solution to the DRDO Challenge at Inter IIT Tech Meet 10.0.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_uav_ugv_navigation/";
-            },},{id: "projects-small-world-iot-networks",
-          title: 'Small World IoT Networks',
-          description: "Enhancing network performance by introducing the small-world phenomenon using actor-critic reinforcement learning, with ML-based fault-node prediction.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/4_small_world_networks/";
             },},{id: "projects-multi-agent-exploration-amp-dynamic-obstacle-avoidance",
           title: 'Multi-Agent Exploration &amp;amp; Dynamic Obstacle Avoidance',
           description: "An RRT-exploration and visual obstacle-detection pipeline for multi-robot mapping with dynamic map updates.",
@@ -131,13 +126,6 @@ ninja.data = [{
           section: "Projects",handler: () => {
               window.location.href = "/projects/6_household_bot/";
             },},{
-        id: 'social-cv',
-        title: 'CV',
-        section: 'Socials',
-        handler: () => {
-          window.open("/assets/pdf/Resume.pdf", "_blank");
-        },
-      },{
         id: 'social-email',
         title: 'email',
         section: 'Socials',
