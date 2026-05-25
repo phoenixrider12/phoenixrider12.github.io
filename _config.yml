@@ -12,8 +12,6 @@ description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Aryaman Gupta — PhD student in Aeronautics and Astronautics at Stanford University, working on safe and reliable learning-based control for autonomous systems.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
 keywords: Aryaman Gupta, robotics, reinforcement learning, safe control, autonomous systems, Stanford, reachability analysis # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: phoenix.jpg # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
@@ -54,7 +52,7 @@ external_services:
 # -----------------------------------------------------------------------------
 
 navbar_fixed: true
-footer_fixed: true
+footer_fixed: false
 search_enabled: false
 socials_in_search: true
 posts_in_search: true
