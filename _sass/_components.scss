@@ -82,7 +82,7 @@ ul.task-list input[type="checkbox"] {
   .profile {
     // Photo is square, so width also sets its rendered height. Tuned down
     // from 30% to roughly match the vertical height of the shortened bio.
-    width: 25%;
+    width: 20%;
 
     .address {
       p {
@@ -219,11 +219,11 @@ ul.task-list input[type="checkbox"] {
 
 // Social icons shown under the profile photo (home page)
 .profile-socials {
-  margin-top: 0.8rem;
+  margin-top: 0.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
 
   a {
     i::before {
