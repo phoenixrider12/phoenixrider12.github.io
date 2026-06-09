@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DeepThinkVLA: Enhancing Reasoning Capability of Vision-Language-Action Models — Aryaman&#39;s research archive</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { darkMode: 'class' };
+  (function () {
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark' || (!stored && matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  })();
+</script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif; font-feature-settings: "ss01"; }
+  .prose-tight p { margin: 0 0 0.5rem 0; }
+  .prose-tight h1, .prose-tight h2, .prose-tight h3 { font-weight: 600; margin: 0.75rem 0 0.25rem; }
+  .prose-tight h1 { font-size: 1.25rem; }
+  .prose-tight h2 { font-size: 1.1rem; }
+  .prose-tight h3 { font-size: 1rem; }
+  .prose-tight ul, .prose-tight ol { margin: 0.25rem 0 0.5rem 1.25rem; }
+  .prose-tight li { margin: 0.15rem 0; }
+  .prose-tight code { background: rgb(244 244 245); padding: 0.05em 0.3em; border-radius: 0.25em; font-size: 0.85em; }
+  html.dark .prose-tight code { background: rgb(39 39 42); }
+  .prose-tight pre { background: rgb(244 244 245); padding: 0.75rem 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 0.5rem 0; }
+  html.dark .prose-tight pre { background: rgb(24 24 27); }
+  .prose-tight pre code { background: transparent; padding: 0; }
+  .prose-tight a { color: rgb(79 70 229); text-decoration: underline; }
+  html.dark .prose-tight a { color: rgb(165 180 252); }
+  .prose-tight blockquote { border-left: 3px solid rgb(228 228 231); padding-left: 0.75rem; color: rgb(82 82 91); }
+  html.dark .prose-tight blockquote { border-left-color: rgb(63 63 70); color: rgb(161 161 170); }
+</style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 min-h-screen antialiased">
+<header class="sticky top-0 z-10 border-b border-zinc-200 dark:border-zinc-800 backdrop-blur bg-white/70 dark:bg-zinc-950/70">
+  <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 px-6 py-3">
+    <a href="/research/index.html" class="font-mono text-sm font-medium tracking-tight">Aryaman&#39;s research archive</a>
+    <button type="button" id="theme-toggle"
+      class="rounded-md border border-zinc-200 px-2 py-1 text-[11px] text-zinc-500 hover:text-zinc-900 dark:border-zinc-800 dark:hover:text-zinc-100"
+    >Theme</button>
+  </div>
+</header>
+<main class="mx-auto max-w-4xl px-6 py-8">
+
+<a href="/research/index.html" class="text-xs text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100">← Library</a>
+
+<article class="mt-4 space-y-6">
+  <header>
+    <h1 class="text-xl font-medium leading-snug">DeepThinkVLA: Enhancing Reasoning Capability of Vision-Language-Action Models</h1>
+    <p class="mt-2 text-sm text-zinc-500">
+      Cheng Yin, Yankai Lin, Wang Xu, Sikyuen Tam, Xiangrui Zeng, Zhiyuan Liu, Zhouping Yin
+        — 2025 · arXiv
+    </p>
+    <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
+        <a class="text-indigo-500 hover:underline" href="http://arxiv.org/abs/2511.15669v2" target="_blank" rel="noopener">arXiv ↗</a>
+        <a class="text-indigo-500 hover:underline" href="https://arxiv.org/pdf/2511.15669v2" target="_blank" rel="noopener">PDF ↗</a>
+      <span class="text-zinc-500" title="May 29, 2026 · 12:48 PM">Added May 29, 2026</span>
+    </div>
+      <div class="mt-4 flex flex-wrap gap-1.5">
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">chain-of-thought</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">vla</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">out-of-distribution</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">action-chunking</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">robot-foundation-model</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">hierarchical-policy</span>
+      </div>
+  </header>
+
+
+
+  <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">TL;DR</h2>
+      &lt;p class=&#34;text-sm leading-relaxed&#34;&gt;Identifies two necessary conditions for CoT to work in VLA, then builds DeepThinkVLA (hybrid-attention + SFT→RL) achieving SOTA on LIBERO, LIBERO-Plus, RoboTwin 2.0.</p>
+    </section>
+  <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Summary</h2>
+      &lt;p class=&#34;text-sm leading-relaxed&#34;&gt;Diagnoses why CoT fails in VLA via two conditions: Decoding Alignment (modality-appropriate generation) and Causal Alignment (outcome-linked reasoning). DeepThinkVLA satisfies both via hybrid causal+bidirectional attention decoder and SFT-then-GRPO-RL pipeline, achieving 97.0% on LIBERO and +21.7pp over π0-FAST on RoboTwin 2.0.</p>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Key contributions</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— Empirical identification of two necessary conditions (Decoding Alignment, Causal Alignment) whose violation makes CoT harmful or decorative in VLA.</li>
+        <li class="pl-4 -indent-4">— Hybrid-attention decoder (causal for CoT, bidirectional for parallel action decoding) + SFT-then-GRPO-RL pipeline achieving SOTA on three benchmarks.</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Novelty</h2>
+      &lt;p class=&#34;text-sm leading-relaxed&#34;&gt;Unlike ECoT/CoT-VLA which apply SFT CoT to AR decoders, DeepThinkVLA diagnoses both architectural and training failure modes and jointly fixes them.</p>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Methods</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— Hybrid-attention decoder: causal attention for CoT tokens, bidirectional for parallel action-chunk decoding.</li>
+        <li class="pl-4 -indent-4">— Two-stage CoT dataset construction: cloud VLM on keyframes (gripper-state detected), local fine-tuned VLM for intermediate frames.</li>
+        <li class="pl-4 -indent-4">— GRPO-style RL with sparse task-success reward and group-normalized credit assignment over full reasoning-action trajectories.</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Strengths</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— OOD ablation (Joint-Limit dynamics) rigorously distinguishes SFT-CoT (32pp drop ≈ reasoning-free 31.6pp) from RL-CoT (24.4pp), proving functional causal role.</li>
+        <li class="pl-4 -indent-4">— Backbone generality confirmed: Qwen3-VL (no robotic pretraining) reaches 94.9% LIBERO / 77.0% LIBERO-Plus, showing conditions generalize beyond π0-FAST weights.</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Weaknesses</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— Real-robot evaluation limited to 20 trials on 3 tasks with no baseline comparison — insufficient to validate real-world claims.</li>
+        <li class="pl-4 -indent-4">— RL stage evaluated only on LIBERO-Long (+2pp) and RoboTwin 2.0 (+6.8pp); gains modest relative to compute cost on 8×A800s.</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Future work</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— Extend causal-alignment RL to more diverse, contact-rich real-robot tasks with dense reward signals.</li>
+        <li class="pl-4 -indent-4">— Investigate whether Decoding/Causal Alignment conditions hold for diffusion-based action heads.</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Key insights</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— SFT-learned CoT is &#39;fake reasoning&#39;: its OOD drop matches reasoning-free baseline until RL causally links CoT to task outcomes.</li>
+        <li class="pl-4 -indent-4">— Forcing language CoT and high-dim actions through a single AR decoder is actively harmful (−4.2pp), not merely suboptimal.</li>
+    </ul>
+    </section>
+
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">My thoughts</h2>
+      <div class="prose-tight rounded-md border border-zinc-200 bg-white p-4 text-sm leading-relaxed dark:border-zinc-800 dark:bg-zinc-900">
+        <h1>My Thoughts</h1>
+<h2>Initial Reaction</h2>
+<h2>Connections</h2>
+<h2>Implementation Notes</h2>
+<h2>Open Questions</h2>
+
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Connections</h2>
+      <ul class="space-y-2">
+          <li class="rounded-md border border-indigo-300/40 bg-indigo-50/40 p-3 text-xs dark:border-indigo-400/30 dark:bg-indigo-500/5">
+            <a class="font-medium hover:text-indigo-500" href="/research/papers/arxiv-2410.24164.html">$π_0$: A Vision-Language-Action Flow Model for General Robot Control</a>
+            <p class="mt-1 text-zinc-500">π0 is a competing VLA baseline used on the same benchmarks; hierarchical policy and action-chunking approaches are directly compared/referenced in DeepThinkVLA.</p>
+          </li>
+          <li class="rounded-md border border-indigo-300/40 bg-indigo-50/40 p-3 text-xs dark:border-indigo-400/30 dark:bg-indigo-500/5">
+            <a class="font-medium hover:text-indigo-500" href="/research/papers/arxiv-2502.19645.html">Fine-Tuning Vision-Language-Action Models: Optimizing Speed and Success</a>
+            <p class="mt-1 text-zinc-500">Both implement parallel/bidirectional action decoding with action chunking in VLA models; OpenVLA-OFT&#39;s parallel decoding directly relates to DeepThinkVLA&#39;s hybrid-attention design and LIBERO benchmarking.</p>
+          </li>
+      </ul>
+    </section>
+
+    <section class="border-t border-zinc-200 pt-6 dark:border-zinc-800">
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Related papers</h2>
+      <ul class="space-y-1.5 text-sm">
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2502.19645.html">
+              <span>Fine-Tuning Vision-Language-Action Models: Optimizing Speed and Success</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=0.72</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2410.24164.html">
+              <span>$π_0$: A Vision-Language-Action Flow Model for General Robot Control</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=0.83</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2505.05410.html">
+              <span>Reasoning Models Don&#39;t Always Say What They Think</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=0.88</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2506.06570.html">
+              <span>Unsupervised Discovery of Failure Taxonomies from Deployment Logs</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=0.97</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2309.13475.html">
+              <span>Detecting and Mitigating System-Level Anomalies of Vision-Based Controllers</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=1.05</span>
+            </a>
+          </li>
+      </ul>
+    </section>
+
+  <p class="text-[11px] text-zinc-500">Extracted by <code class="font-mono">claude-sonnet-4-6</code>.</p>
+</article>
+
+</main>
+<footer class="mx-auto max-w-4xl px-6 py-8 text-[11px] text-zinc-500">
+  Generated 2026-06-08 by
+  <a class="underline" href="https://github.com/phoenixrider12/paper-archive">paper-archive</a>.
+</footer>
+<script>
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const next = root.classList.contains('dark') ? 'light' : 'dark';
+    root.classList.toggle('dark', next === 'dark');
+    localStorage.setItem('theme', next);
+  });
+</script>
+</body>
+</html>

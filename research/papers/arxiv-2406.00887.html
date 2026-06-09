@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Deep Reinforcement Learning for Sim-to-Real Policy Transfer of VTOL-UAVs Offshore Docking Operations — Aryaman&#39;s research archive</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { darkMode: 'class' };
+  (function () {
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark' || (!stored && matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  })();
+</script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif; font-feature-settings: "ss01"; }
+  .prose-tight p { margin: 0 0 0.5rem 0; }
+  .prose-tight h1, .prose-tight h2, .prose-tight h3 { font-weight: 600; margin: 0.75rem 0 0.25rem; }
+  .prose-tight h1 { font-size: 1.25rem; }
+  .prose-tight h2 { font-size: 1.1rem; }
+  .prose-tight h3 { font-size: 1rem; }
+  .prose-tight ul, .prose-tight ol { margin: 0.25rem 0 0.5rem 1.25rem; }
+  .prose-tight li { margin: 0.15rem 0; }
+  .prose-tight code { background: rgb(244 244 245); padding: 0.05em 0.3em; border-radius: 0.25em; font-size: 0.85em; }
+  html.dark .prose-tight code { background: rgb(39 39 42); }
+  .prose-tight pre { background: rgb(244 244 245); padding: 0.75rem 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 0.5rem 0; }
+  html.dark .prose-tight pre { background: rgb(24 24 27); }
+  .prose-tight pre code { background: transparent; padding: 0; }
+  .prose-tight a { color: rgb(79 70 229); text-decoration: underline; }
+  html.dark .prose-tight a { color: rgb(165 180 252); }
+  .prose-tight blockquote { border-left: 3px solid rgb(228 228 231); padding-left: 0.75rem; color: rgb(82 82 91); }
+  html.dark .prose-tight blockquote { border-left-color: rgb(63 63 70); color: rgb(161 161 170); }
+</style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 min-h-screen antialiased">
+<header class="sticky top-0 z-10 border-b border-zinc-200 dark:border-zinc-800 backdrop-blur bg-white/70 dark:bg-zinc-950/70">
+  <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 px-6 py-3">
+    <a href="/research/index.html" class="font-mono text-sm font-medium tracking-tight">Aryaman&#39;s research archive</a>
+    <button type="button" id="theme-toggle"
+      class="rounded-md border border-zinc-200 px-2 py-1 text-[11px] text-zinc-500 hover:text-zinc-900 dark:border-zinc-800 dark:hover:text-zinc-100"
+    >Theme</button>
+  </div>
+</header>
+<main class="mx-auto max-w-4xl px-6 py-8">
+
+<a href="/research/index.html" class="text-xs text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100">← Library</a>
+
+<article class="mt-4 space-y-6">
+  <header>
+    <h1 class="text-xl font-medium leading-snug">Deep Reinforcement Learning for Sim-to-Real Policy Transfer of VTOL-UAVs Offshore Docking Operations</h1>
+    <p class="mt-2 text-sm text-zinc-500">
+      Ali M. Ali, Aryaman Gupta, Hashim A. Hashim
+        — 2024 · arXiv
+    </p>
+    <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
+        <a class="text-indigo-500 hover:underline" href="http://arxiv.org/abs/2406.00887v2" target="_blank" rel="noopener">arXiv ↗</a>
+        <a class="text-indigo-500 hover:underline" href="https://arxiv.org/pdf/2406.00887v2" target="_blank" rel="noopener">PDF ↗</a>
+      <span class="text-zinc-500" title="May 28, 2026 · 2:44 AM">Added May 28, 2026</span>
+    </div>
+      <div class="mt-4 flex flex-wrap gap-1.5">
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">sim-to-real</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">hierarchical-policy</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">domain-randomization</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">UAV</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">fallback-controller</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">safety</span>
+      </div>
+  </header>
+
+
+
+  <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">TL;DR</h2>
+      &lt;p class=&#34;text-sm leading-relaxed&#34;&gt;Hierarchical DRL (model-based approach + PPO landing) for VTOL-UAV autonomous docking on wave-disturbed offshore platforms with sim-to-real transfer.</p>
+    </section>
+  <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Summary</h2>
+      &lt;p class=&#34;text-sm leading-relaxed&#34;&gt;Decomposes offshore UAV landing into model-based approach phase and DRL landing phase; uses JONSWAP spectrum domain randomization per episode for sim-to-real generalization. PPO outperforms DQN variants: 0.327 m/s impact velocity vs 0.820 m/s (DQN), converging in &lt;200 episodes.</p>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Key contributions</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— Hierarchical decomposition: model-based approach phase + offline-trained PPO landing phase reduces training time and improves success rate.</li>
+        <li class="pl-4 -indent-4">— JONSWAP spectrum domain randomization per episode as stochastic wave disturbance model for sim-to-real policy generalization.</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Novelty</h2>
+      &lt;p class=&#34;text-sm leading-relaxed&#34;&gt;Unlike prior DRL UAV docking (Hwangbo et al., Koch et al.) targeting static platforms, combines phase decomposition with per-episode JONSWAP wave randomization for moving offshore stations.</p>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Methods</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— PPO actor-critic with GAE for continuous thrust control in landing phase</li>
+        <li class="pl-4 -indent-4">— JONSWAP spectrum + inverse Fourier transform for per-episode randomized wave generation</li>
+        <li class="pl-4 -indent-4">— Dueling/Double DQN with experience replay as discrete-action baselines</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Strengths</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— DQN vs Double DQN vs Dueling DQN vs PPO comparison with identical network architectures enables fair algorithm benchmarking.</li>
+        <li class="pl-4 -indent-4">— JONSWAP per-episode randomization is physically grounded domain randomization — not generic noise injection.</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Weaknesses</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— No real-world hardware experiments; sim-to-real transfer claim is unvalidated beyond numerical simulation.</li>
+        <li class="pl-4 -indent-4">— 1D vertical dynamics only (z-axis); full 6-DOF landing with lateral disturbances not addressed.</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Future work</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— Incorporate visual feedback from onboard camera into landing phase policy.</li>
+        <li class="pl-4 -indent-4">— Validate learned policy on physical VTOL-UAV hardware over water.</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Key insights</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— Phase decomposition (model-based approach + DRL landing) cuts training complexity without sacrificing policy quality.</li>
+        <li class="pl-4 -indent-4">— Per-episode JONSWAP randomization is sufficient for generalized sim-to-real policy transfer in maritime UAV docking.</li>
+    </ul>
+    </section>
+
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">My thoughts</h2>
+      <div class="prose-tight rounded-md border border-zinc-200 bg-white p-4 text-sm leading-relaxed dark:border-zinc-800 dark:bg-zinc-900">
+        <h1>My Thoughts</h1>
+<h2>Initial Reaction</h2>
+<h2>Connections</h2>
+<h2>Implementation Notes</h2>
+<h2>Open Questions</h2>
+
+      </div>
+    </section>
+
+
+    <section class="border-t border-zinc-200 pt-6 dark:border-zinc-800">
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Related papers</h2>
+      <ul class="space-y-1.5 text-sm">
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2410.24164.html">
+              <span>$π_0$: A Vision-Language-Action Flow Model for General Robot Control</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=0.99</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2309.13475.html">
+              <span>Detecting and Mitigating System-Level Anomalies of Vision-Based Controllers</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=1.00</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2506.06570.html">
+              <span>Unsupervised Discovery of Failure Taxonomies from Deployment Logs</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=1.02</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2502.19645.html">
+              <span>Fine-Tuning Vision-Language-Action Models: Optimizing Speed and Success</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=1.03</span>
+            </a>
+          </li>
+      </ul>
+    </section>
+
+  <p class="text-[11px] text-zinc-500">Extracted by <code class="font-mono">claude-sonnet-4-6</code>.</p>
+</article>
+
+</main>
+<footer class="mx-auto max-w-4xl px-6 py-8 text-[11px] text-zinc-500">
+  Generated 2026-06-08 by
+  <a class="underline" href="https://github.com/phoenixrider12/paper-archive">paper-archive</a>.
+</footer>
+<script>
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const next = root.classList.contains('dark') ? 'light' : 'dark';
+    root.classList.toggle('dark', next === 'dark');
+    localStorage.setItem('theme', next);
+  });
+</script>
+</body>
+</html>
