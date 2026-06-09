@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aryaman&#39;s research archive</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { darkMode: 'class' };
+  (function () {
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark' || (!stored && matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  })();
+</script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif; font-feature-settings: "ss01"; }
+  .prose-tight p { margin: 0 0 0.5rem 0; }
+  .prose-tight h1, .prose-tight h2, .prose-tight h3 { font-weight: 600; margin: 0.75rem 0 0.25rem; }
+  .prose-tight h1 { font-size: 1.25rem; }
+  .prose-tight h2 { font-size: 1.1rem; }
+  .prose-tight h3 { font-size: 1rem; }
+  .prose-tight ul, .prose-tight ol { margin: 0.25rem 0 0.5rem 1.25rem; }
+  .prose-tight li { margin: 0.15rem 0; }
+  .prose-tight code { background: rgb(244 244 245); padding: 0.05em 0.3em; border-radius: 0.25em; font-size: 0.85em; }
+  html.dark .prose-tight code { background: rgb(39 39 42); }
+  .prose-tight pre { background: rgb(244 244 245); padding: 0.75rem 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 0.5rem 0; }
+  html.dark .prose-tight pre { background: rgb(24 24 27); }
+  .prose-tight pre code { background: transparent; padding: 0; }
+  .prose-tight a { color: rgb(79 70 229); text-decoration: underline; }
+  html.dark .prose-tight a { color: rgb(165 180 252); }
+  .prose-tight blockquote { border-left: 3px solid rgb(228 228 231); padding-left: 0.75rem; color: rgb(82 82 91); }
+  html.dark .prose-tight blockquote { border-left-color: rgb(63 63 70); color: rgb(161 161 170); }
+</style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 min-h-screen antialiased">
+<header class="sticky top-0 z-10 border-b border-zinc-200 dark:border-zinc-800 backdrop-blur bg-white/70 dark:bg-zinc-950/70">
+  <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 px-6 py-3">
+    <a href="/research/index.html" class="font-mono text-sm font-medium tracking-tight">Aryaman&#39;s research archive</a>
+    <button type="button" id="theme-toggle"
+      class="rounded-md border border-zinc-200 px-2 py-1 text-[11px] text-zinc-500 hover:text-zinc-900 dark:border-zinc-800 dark:hover:text-zinc-100"
+    >Theme</button>
+  </div>
+</header>
+<main class="mx-auto max-w-4xl px-6 py-8">
+
+<section class="mb-6">
+  <h1 class="text-2xl font-medium tracking-tight">Aryaman&#39;s research archive</h1>
+<p class="mt-1 text-sm text-zinc-500">Robotics · VLA · world models · reasoning</p></section>
+
+<div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+  <input
+    id="filter-input"
+    type="search"
+    placeholder="Search title, author, tag, summary…"
+    autocomplete="off"
+    spellcheck="false"
+    class="w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm outline-none placeholder:text-zinc-400 focus:border-indigo-500 dark:border-zinc-800 dark:bg-zinc-900 sm:max-w-md"
+  />
+  <div class="flex overflow-hidden rounded-md border border-zinc-200 text-[11px] dark:border-zinc-800" id="kind-toggle">
+    <button data-kind="all" class="kind-btn bg-zinc-100 px-2 py-1 dark:bg-zinc-800">All <span class="font-mono opacity-60">9</span></button>
+    <button data-kind="paper" class="kind-btn px-2 py-1 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100">Papers <span class="font-mono opacity-60">7</span></button>
+    <button data-kind="note" class="kind-btn px-2 py-1 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100">Notes <span class="font-mono opacity-60">2</span></button>
+  </div>
+</div>
+
+<ul id="cards" class="grid gap-3">
+    <li class="card-item" data-id="note-grpo-vs-dapo-ea9e33" data-kind="note">
+      <a href="/research/notes/note-grpo-vs-dapo-ea9e33.html"
+         class="group block rounded-lg border border-zinc-200 p-4 transition hover:border-indigo-500 dark:border-zinc-800"
+      >
+        <div class="flex items-baseline justify-between gap-3">
+          <h2 class="text-sm font-medium leading-snug group-hover:text-indigo-500">GRPO vs DAPO</h2>
+          <span class="shrink-0 font-mono text-[10px] text-zinc-500" title="June 7, 2026 · 10:13 PM">Jun 7, 2026</span>
+        </div>
+          <p class="mt-1 flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-zinc-500">
+            Note          </p>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">1. Asymmetric clipping: Clip with different epsilons, with a higher upper epsilon to maintain exploration and prevent entropy collapse.</p>
+      </a>
+    </li>
+    <li class="card-item" data-id="note-off-policy-drift-695268" data-kind="note">
+      <a href="/research/notes/note-off-policy-drift-695268.html"
+         class="group block rounded-lg border border-zinc-200 p-4 transition hover:border-indigo-500 dark:border-zinc-800"
+      >
+        <div class="flex items-baseline justify-between gap-3">
+          <h2 class="text-sm font-medium leading-snug group-hover:text-indigo-500">Off-Policy Drift</h2>
+          <span class="shrink-0 font-mono text-[10px] text-zinc-500" title="June 7, 2026 · 4:42 PM">Jun 7, 2026</span>
+        </div>
+          <p class="mt-1 flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-zinc-500">
+            Note          </p>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">- Classical synchronous RL training used to wait for data generation before doing any gradient update, wasting GPUs as they lie idle when data generation is happening.</p>
+      </a>
+    </li>
+    <li class="card-item" data-id="arxiv-2505.05410" data-kind="paper">
+      <a href="/research/papers/arxiv-2505.05410.html"
+         class="group block rounded-lg border border-zinc-200 p-4 transition hover:border-indigo-500 dark:border-zinc-800"
+      >
+        <div class="flex items-baseline justify-between gap-3">
+          <h2 class="text-sm font-medium leading-snug group-hover:text-indigo-500">Reasoning Models Don&#39;t Always Say What They Think</h2>
+          <span class="shrink-0 font-mono text-[10px] text-zinc-500" title="May 30, 2026 · 10:39 PM">May 30, 2026</span>
+        </div>
+          <p class="mt-1 text-xs text-zinc-500">
+            Yanda Chen, Joe Benton, Ansh Radhakrishnan, Jonathan Uesato, …              — 2025 · arXiv
+          </p>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">CoT reasoning in SOTA models (Claude 3.7, DeepSeek R1) is unfaithful &lt;20% of the time; RL doesn&#39;t fix it; reward hacking rarely verbalized.</p>
+          <div class="mt-3 flex flex-wrap gap-1.5">
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">chain-of-thought</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">safety</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">reward-hacking</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">runtime-monitoring</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">alignment-faking</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">faithfulness</span>
+          </div>
+      </a>
+    </li>
+    <li class="card-item" data-id="arxiv-2511.15669" data-kind="paper">
+      <a href="/research/papers/arxiv-2511.15669.html"
+         class="group block rounded-lg border border-zinc-200 p-4 transition hover:border-indigo-500 dark:border-zinc-800"
+      >
+        <div class="flex items-baseline justify-between gap-3">
+          <h2 class="text-sm font-medium leading-snug group-hover:text-indigo-500">DeepThinkVLA: Enhancing Reasoning Capability of Vision-Language-Action Models</h2>
+          <span class="shrink-0 font-mono text-[10px] text-zinc-500" title="May 29, 2026 · 12:48 PM">May 29, 2026</span>
+        </div>
+          <p class="mt-1 text-xs text-zinc-500">
+            Cheng Yin, Yankai Lin, Wang Xu, Sikyuen Tam, …              — 2025 · arXiv
+          </p>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">Identifies two necessary conditions for CoT to work in VLA, then builds DeepThinkVLA (hybrid-attention + SFT→RL) achieving SOTA on LIBERO, LIBERO-Plus, RoboTwin 2.0.</p>
+          <div class="mt-3 flex flex-wrap gap-1.5">
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">chain-of-thought</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">vla</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">out-of-distribution</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">action-chunking</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">robot-foundation-model</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">hierarchical-policy</span>
+          </div>
+      </a>
+    </li>
+    <li class="card-item" data-id="arxiv-2502.19645" data-kind="paper">
+      <a href="/research/papers/arxiv-2502.19645.html"
+         class="group block rounded-lg border border-zinc-200 p-4 transition hover:border-indigo-500 dark:border-zinc-800"
+      >
+        <div class="flex items-baseline justify-between gap-3">
+          <h2 class="text-sm font-medium leading-snug group-hover:text-indigo-500">Fine-Tuning Vision-Language-Action Models: Optimizing Speed and Success</h2>
+          <span class="shrink-0 font-mono text-[10px] text-zinc-500" title="May 28, 2026 · 10:08 PM">May 28, 2026</span>
+        </div>
+          <p class="mt-1 text-xs text-zinc-500">
+            Moo Jin Kim, Chelsea Finn, Percy Liang              — 2025 · arXiv
+          </p>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">Systematic VLA fine-tuning study yields OpenVLA-OFT: parallel decoding + action chunking + continuous L1 regression achieves 97.1% on LIBERO and outperforms π0/RDT-1B on ALOHA.</p>
+          <div class="mt-3 flex flex-wrap gap-1.5">
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">vla</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">dexterous-manipulation</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">robot-foundation-model</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">action-chunking</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">film-conditioning</span>
+          </div>
+      </a>
+    </li>
+    <li class="card-item" data-id="arxiv-2406.00887" data-kind="paper">
+      <a href="/research/papers/arxiv-2406.00887.html"
+         class="group block rounded-lg border border-zinc-200 p-4 transition hover:border-indigo-500 dark:border-zinc-800"
+      >
+        <div class="flex items-baseline justify-between gap-3">
+          <h2 class="text-sm font-medium leading-snug group-hover:text-indigo-500">Deep Reinforcement Learning for Sim-to-Real Policy Transfer of VTOL-UAVs Offshore Docking Operations</h2>
+          <span class="shrink-0 font-mono text-[10px] text-zinc-500" title="May 28, 2026 · 2:44 AM">May 28, 2026</span>
+        </div>
+          <p class="mt-1 text-xs text-zinc-500">
+            Ali M. Ali, Aryaman Gupta, Hashim A. Hashim              — 2024 · arXiv
+          </p>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">Hierarchical DRL (model-based approach + PPO landing) for VTOL-UAV autonomous docking on wave-disturbed offshore platforms with sim-to-real transfer.</p>
+          <div class="mt-3 flex flex-wrap gap-1.5">
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">sim-to-real</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">hierarchical-policy</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">domain-randomization</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">UAV</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">fallback-controller</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">safety</span>
+          </div>
+      </a>
+    </li>
+    <li class="card-item" data-id="arxiv-2309.13475" data-kind="paper">
+      <a href="/research/papers/arxiv-2309.13475.html"
+         class="group block rounded-lg border border-zinc-200 p-4 transition hover:border-indigo-500 dark:border-zinc-800"
+      >
+        <div class="flex items-baseline justify-between gap-3">
+          <h2 class="text-sm font-medium leading-snug group-hover:text-indigo-500">Detecting and Mitigating System-Level Anomalies of Vision-Based Controllers</h2>
+          <span class="shrink-0 font-mono text-[10px] text-zinc-500" title="May 28, 2026 · 2:29 AM">May 28, 2026</span>
+        </div>
+          <p class="mt-1 text-xs text-zinc-500">
+            Aryaman Gupta, Kaustav Chakraborty, Somil Bansal              — 2023 · arXiv
+          </p>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">HJ reachability stress-tests vision-based controllers offline to mine system-level failures; trains runtime anomaly classifier + fallback controller.</p>
+          <div class="mt-3 flex flex-wrap gap-1.5">
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">reachability-analysis</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">anomaly-detection</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">runtime-monitoring</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">fallback-controller</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">out-of-distribution</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">safety</span>
+          </div>
+      </a>
+    </li>
+    <li class="card-item" data-id="arxiv-2506.06570" data-kind="paper">
+      <a href="/research/papers/arxiv-2506.06570.html"
+         class="group block rounded-lg border border-zinc-200 p-4 transition hover:border-indigo-500 dark:border-zinc-800"
+      >
+        <div class="flex items-baseline justify-between gap-3">
+          <h2 class="text-sm font-medium leading-snug group-hover:text-indigo-500">Unsupervised Discovery of Failure Taxonomies from Deployment Logs</h2>
+          <span class="shrink-0 font-mono text-[10px] text-zinc-500" title="May 28, 2026 · 2:27 AM">May 28, 2026</span>
+        </div>
+          <p class="mt-1 text-xs text-zinc-500">
+            Aryaman Gupta, Yusuf Umut Ciftci, Somil Bansal              — 2025 · arXiv
+          </p>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">Unsupervised framework: VLM-inferred failure explanations + LLM clustering → interpretable failure taxonomies from raw deployment logs.</p>
+          <div class="mt-3 flex flex-wrap gap-1.5">
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">failure-analysis</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">unsupervised-clustering</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">deployment-logs</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">runtime-monitoring</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">chain-of-thought</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">data-collection</span>
+          </div>
+      </a>
+    </li>
+    <li class="card-item" data-id="arxiv-2410.24164" data-kind="paper">
+      <a href="/research/papers/arxiv-2410.24164.html"
+         class="group block rounded-lg border border-zinc-200 p-4 transition hover:border-indigo-500 dark:border-zinc-800"
+      >
+        <div class="flex items-baseline justify-between gap-3">
+          <h2 class="text-sm font-medium leading-snug group-hover:text-indigo-500">$π_0$: A Vision-Language-Action Flow Model for General Robot Control</h2>
+          <span class="shrink-0 font-mono text-[10px] text-zinc-500" title="May 28, 2026 · 2:10 AM">May 28, 2026</span>
+        </div>
+          <p class="mt-1 text-xs text-zinc-500">
+            Kevin Black, Noah Brown, Danny Driess, Adnan Esmail, …              — 2024 · arXiv
+          </p>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">π0: 3.3B VLA built on PaliGemma + flow-matching action expert, pre-trained on 10k hrs cross-embodiment data, enabling dexterous long-horizon manipulation.</p>
+          <div class="mt-3 flex flex-wrap gap-1.5">
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">vla</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">flow-matching</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">robot-foundation-model</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">dexterous-manipulation</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">cross-embodiment</span>
+              <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">hierarchical-policy</span>
+          </div>
+      </a>
+    </li>
+</ul>
+<p id="empty" class="hidden mt-6 text-center text-sm text-zinc-500">Nothing matches.</p>
+
+</main>
+<footer class="mx-auto max-w-4xl px-6 py-8 text-[11px] text-zinc-500">
+  Generated 2026-06-08 by
+  <a class="underline" href="https://github.com/phoenixrider12/paper-archive">paper-archive</a>.
+</footer>
+<script>
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const next = root.classList.contains('dark') ? 'light' : 'dark';
+    root.classList.toggle('dark', next === 'dark');
+    localStorage.setItem('theme', next);
+  });
+</script>
+<script>
+  // Tiny inline filter — fast enough for thousands of items.
+  const SEARCH = 9;
+  let index = null;
+  fetch('/research/search.json').then(r => r.json()).then(j => { index = Object.fromEntries(j.map(x => [x.id, x.haystack])); });
+
+  const input = document.getElementById('filter-input');
+  const cards = [...document.querySelectorAll('.card-item')];
+  const empty = document.getElementById('empty');
+  const buttons = [...document.querySelectorAll('.kind-btn')];
+  let activeKind = 'all';
+
+  function apply() {
+    const q = input.value.trim().toLowerCase();
+    let shown = 0;
+    cards.forEach(card => {
+      const id = card.dataset.id;
+      const kind = card.dataset.kind;
+      const kindOk = activeKind === 'all' || kind === activeKind;
+      const textOk = !q || (index && index[id] && index[id].includes(q));
+      const visible = kindOk && textOk;
+      card.style.display = visible ? '' : 'none';
+      if (visible) shown++;
+    });
+    empty.classList.toggle('hidden', shown !== 0);
+  }
+  input.addEventListener('input', apply);
+  buttons.forEach(b => {
+    b.addEventListener('click', () => {
+      activeKind = b.dataset.kind;
+      buttons.forEach(other => {
+        other.classList.toggle('bg-zinc-100', other === b);
+        other.classList.toggle('dark:bg-zinc-800', other === b);
+        other.classList.toggle('text-zinc-500', other !== b);
+      });
+      apply();
+    });
+  });
+</script>
+</body>
+</html>

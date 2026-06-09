@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Detecting and Mitigating System-Level Anomalies of Vision-Based Controllers — Aryaman&#39;s research archive</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { darkMode: 'class' };
+  (function () {
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark' || (!stored && matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  })();
+</script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif; font-feature-settings: "ss01"; }
+  .prose-tight p { margin: 0 0 0.5rem 0; }
+  .prose-tight h1, .prose-tight h2, .prose-tight h3 { font-weight: 600; margin: 0.75rem 0 0.25rem; }
+  .prose-tight h1 { font-size: 1.25rem; }
+  .prose-tight h2 { font-size: 1.1rem; }
+  .prose-tight h3 { font-size: 1rem; }
+  .prose-tight ul, .prose-tight ol { margin: 0.25rem 0 0.5rem 1.25rem; }
+  .prose-tight li { margin: 0.15rem 0; }
+  .prose-tight code { background: rgb(244 244 245); padding: 0.05em 0.3em; border-radius: 0.25em; font-size: 0.85em; }
+  html.dark .prose-tight code { background: rgb(39 39 42); }
+  .prose-tight pre { background: rgb(244 244 245); padding: 0.75rem 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 0.5rem 0; }
+  html.dark .prose-tight pre { background: rgb(24 24 27); }
+  .prose-tight pre code { background: transparent; padding: 0; }
+  .prose-tight a { color: rgb(79 70 229); text-decoration: underline; }
+  html.dark .prose-tight a { color: rgb(165 180 252); }
+  .prose-tight blockquote { border-left: 3px solid rgb(228 228 231); padding-left: 0.75rem; color: rgb(82 82 91); }
+  html.dark .prose-tight blockquote { border-left-color: rgb(63 63 70); color: rgb(161 161 170); }
+</style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 min-h-screen antialiased">
+<header class="sticky top-0 z-10 border-b border-zinc-200 dark:border-zinc-800 backdrop-blur bg-white/70 dark:bg-zinc-950/70">
+  <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 px-6 py-3">
+    <a href="/research/index.html" class="font-mono text-sm font-medium tracking-tight">Aryaman&#39;s research archive</a>
+    <button type="button" id="theme-toggle"
+      class="rounded-md border border-zinc-200 px-2 py-1 text-[11px] text-zinc-500 hover:text-zinc-900 dark:border-zinc-800 dark:hover:text-zinc-100"
+    >Theme</button>
+  </div>
+</header>
+<main class="mx-auto max-w-4xl px-6 py-8">
+
+<a href="/research/index.html" class="text-xs text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100">← Library</a>
+
+<article class="mt-4 space-y-6">
+  <header>
+    <h1 class="text-xl font-medium leading-snug">Detecting and Mitigating System-Level Anomalies of Vision-Based Controllers</h1>
+    <p class="mt-2 text-sm text-zinc-500">
+      Aryaman Gupta, Kaustav Chakraborty, Somil Bansal
+        — 2023 · arXiv
+    </p>
+    <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
+        <a class="text-indigo-500 hover:underline" href="http://arxiv.org/abs/2309.13475v5" target="_blank" rel="noopener">arXiv ↗</a>
+        <a class="text-indigo-500 hover:underline" href="https://arxiv.org/pdf/2309.13475v5" target="_blank" rel="noopener">PDF ↗</a>
+      <span class="text-zinc-500" title="May 28, 2026 · 2:29 AM">Added May 28, 2026</span>
+    </div>
+      <div class="mt-4 flex flex-wrap gap-1.5">
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">reachability-analysis</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">anomaly-detection</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">runtime-monitoring</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">fallback-controller</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">out-of-distribution</span>
+          <span class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-mono text-[10px] text-zinc-500 dark:border-zinc-800">safety</span>
+      </div>
+  </header>
+
+
+
+  <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">TL;DR</h2>
+      &lt;p class=&#34;text-sm leading-relaxed&#34;&gt;HJ reachability stress-tests vision-based controllers offline to mine system-level failures; trains runtime anomaly classifier + fallback controller.</p>
+    </section>
+  <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Summary</h2>
+      &lt;p class=&#34;text-sm leading-relaxed&#34;&gt;Vision-based controllers fail catastrophically on OOD inputs; component-level anomaly detectors miss cascading system failures. Offline HJ reachability auto-labels unsafe images; EfficientNet-B0 classifier detects anomalies at runtime; fallback slows aircraft, reducing BRT volume from 25.75% to 18.24% on TaxiNet taxiing task.</p>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Key contributions</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— HJ reachability-based automatic labeling of system-level anomalous images across diverse simulator conditions—no manual annotation.</li>
+        <li class="pl-4 -indent-4">— Runtime anomaly classifier + velocity-reduction fallback that shrinks closed-loop failure set by ~7.5pp on aircraft taxiing.</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Novelty</h2>
+      &lt;p class=&#34;text-sm leading-relaxed&#34;&gt;Extends Chakraborty &amp; Bansal (RA-L 2023) from offline failure discovery to online detection/mitigation without privileged environment info at test time.</p>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Methods</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— Hamilton-Jacobi BRT computation via Level Set Toolbox over 101³ grid in X-Plane simulator</li>
+        <li class="pl-4 -indent-4">— EfficientNet-B0 binary classifier trained on BRT-labeled 240K image dataset</li>
+        <li class="pl-4 -indent-4">— Velocity-reduction fallback controller triggered by anomaly classifier at runtime</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Strengths</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— Outperforms prediction-error and ensemble baselines with explicit state-space visualization showing why component-level labels mislead.</li>
+        <li class="pl-4 -indent-4">— Emergent semantic understanding (runway markings, night lights) learned without heuristics—validated against ground-truth BRTs on unseen airports.</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Weaknesses</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— Single domain (aircraft taxiing); 3-state system—curse of dimensionality limits scalability; real-world validation absent.</li>
+        <li class="pl-4 -indent-4">— Fallback controller (velocity reduction) is trivial; no comparison against more capable alternatives (SLAM, MPC) or formal safety guarantees.</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Future work</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— Replace grid-based HJ with DeepReach for high-dimensional systems.</li>
+        <li class="pl-4 -indent-4">— Temporal/visual-history-aware anomaly detector; incremental TaxiNet retraining on mined failures.</li>
+    </ul>
+    </section>
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Key insights</h2>
+      <ul class="space-y-1.5 text-sm leading-relaxed">
+        <li class="pl-4 -indent-4">— Component-level prediction error is both pessimistic and optimistic in different state regions—poor proxy for system-level safety.</li>
+        <li class="pl-4 -indent-4">— BRT-derived labels enable a classifier to learn semantic failure modes (runway markings, lighting) without any manual heuristics.</li>
+    </ul>
+    </section>
+
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">My thoughts</h2>
+      <div class="prose-tight rounded-md border border-zinc-200 bg-white p-4 text-sm leading-relaxed dark:border-zinc-800 dark:bg-zinc-900">
+        <h1>My Thoughts</h1>
+<p>A supervised learning based runtime monitor trained to do binary classification.</p>
+<h2>Initial Reaction</h2>
+<h2>Connections</h2>
+<h2>Implementation Notes</h2>
+<h2>Open Questions</h2>
+
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Connections</h2>
+      <ul class="space-y-2">
+          <li class="rounded-md border border-zinc-200 p-3 text-xs dark:border-zinc-800">
+            <a class="font-medium hover:text-indigo-500" href="/research/papers/arxiv-2506.06570.html">Unsupervised Discovery of Failure Taxonomies from Deployment Logs</a>
+            <p class="mt-1 text-zinc-500">Both build runtime monitors for vision-based controllers by automatically mining/labeling system-level failures and detecting OOD anomalies.</p>
+          </li>
+      </ul>
+    </section>
+
+    <section class="border-t border-zinc-200 pt-6 dark:border-zinc-800">
+      <h2 class="mb-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500">Related papers</h2>
+      <ul class="space-y-1.5 text-sm">
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2506.06570.html">
+              <span>Unsupervised Discovery of Failure Taxonomies from Deployment Logs</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=0.86</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2406.00887.html">
+              <span>Deep Reinforcement Learning for Sim-to-Real Policy Transfer of VTOL-UAVs Offshore Docking Operations</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=1.00</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2502.19645.html">
+              <span>Fine-Tuning Vision-Language-Action Models: Optimizing Speed and Success</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=1.02</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2505.05410.html">
+              <span>Reasoning Models Don&#39;t Always Say What They Think</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=1.02</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-baseline justify-between gap-3 rounded px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800" href="/research/papers/arxiv-2511.15669.html">
+              <span>DeepThinkVLA: Enhancing Reasoning Capability of Vision-Language-Action Models</span>
+              <span class="shrink-0 font-mono text-[10px] text-zinc-500">d=1.05</span>
+            </a>
+          </li>
+      </ul>
+    </section>
+
+  <p class="text-[11px] text-zinc-500">Extracted by <code class="font-mono">claude-sonnet-4-6</code>.</p>
+</article>
+
+</main>
+<footer class="mx-auto max-w-4xl px-6 py-8 text-[11px] text-zinc-500">
+  Generated 2026-06-08 by
+  <a class="underline" href="https://github.com/phoenixrider12/paper-archive">paper-archive</a>.
+</footer>
+<script>
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const next = root.classList.contains('dark') ? 'light' : 'dark';
+    root.classList.toggle('dark', next === 'dark');
+    localStorage.setItem('theme', next);
+  });
+</script>
+</body>
+</html>
