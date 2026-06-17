@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-My team won the **Qualcomm Innovation Fellowship (North America) 2026**! 🎉
+My team won the **Qualcomm Innovation Fellowship (North America) 2026**.
