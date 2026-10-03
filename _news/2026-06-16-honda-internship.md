@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Starting my research internship at **Honda Research Institute USA**.
+Starting my research internship at Honda Research Institute USA.

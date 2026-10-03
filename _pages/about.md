@@ -27,4 +27,4 @@ Hi, I'm Aryaman, a Ph.D. candidate at Stanford University, advised by Prof. Somi
 
 My research focuses on uncovering failure patterns in robotic systems to enable a continuous failure-guided improvement cycle. I aim to: (a) bake safety mechanisms into their design, and (b) ensure reliable operation at runtime through lightweight guardrails.
 
-Get an [overview](/assets/pdf/Aryaman_Research_Overview.pdf) of my research, grab my [resume](/assets/pdf/Resume.pdf), or find my work on [Google Scholar](https://scholar.google.com/citations?user=AWhTyqwAAAAJ&hl=en). Feel free to reach out — I'm always up for discussions on robotics, AI, and tech in general.
+Grab my [resume](/assets/pdf/Resume.pdf), or find my work on [Google Scholar](https://scholar.google.com/citations?user=AWhTyqwAAAAJ&hl=en). Feel free to reach out — I'm always up for discussions on robotics and AI.

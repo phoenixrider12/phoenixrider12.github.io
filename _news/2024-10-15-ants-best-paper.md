@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-My [paper](https://ieeexplore.ieee.org/document/10898632) on efficient data routing in small-world IoT networks got accepted into **IEEE ANTS 2024** and won the **Best Paper Award**.
+My [paper](https://ieeexplore.ieee.org/document/10898632) on efficient data routing in small-world IoT networks got accepted into IEEE ANTS 2024 and won the Best Paper Award.

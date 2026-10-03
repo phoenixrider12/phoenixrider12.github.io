@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Started my Ph.D. in Aeronautics and Astronautics at **Stanford University**.
+Started my Ph.D. in Aeronautics and Astronautics at Stanford University.
