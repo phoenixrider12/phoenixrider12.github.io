@@ -60,7 +60,7 @@ Ground robots are commonly used in warehouses and factories where the environmen
 
 ### 3D Object Detection
 
-We use 3D object detection instead of standard 2D detection because accurately updating the costmap requires the object's position *and* an estimate of its real-world dimensions — a 2D bounding box can't provide this, but a 3D bounding box in the camera frame can. We use MediaPipe's [Objectron](https://google.github.io/mediapipe/solutions/objectron.html) module, which detects objects like chairs, shoes, mugs, and cameras.
+We use 3D object detection instead of standard 2D detection because accurately updating the costmap requires the object's position _and_ an estimate of its real-world dimensions — a 2D bounding box can't provide this, but a 3D bounding box in the camera frame can. We use MediaPipe's [Objectron](https://google.github.io/mediapipe/solutions/objectron.html) module, which detects objects like chairs, shoes, mugs, and cameras.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
